@@ -1,0 +1,45 @@
+<!-- Loading screen -->
+<div id="loading" [class.is-hidden]="!loading" aria-hidden="true">
+  <div class="loading-inner">
+    <div class="loading-logo">AZ</div>
+    <div class="loading-spinner"></div>
+    <p class="loading-text">Crafting experience…</p>
+  </div>
+</div>
+
+<!-- Custom cursor -->
+<div id="cursor" #cursor></div>
+
+<!-- Animated gradient background -->
+<app-gradient-bg></app-gradient-bg>
+
+<!-- Floating particles -->
+<app-particles></app-particles>
+
+<!-- Scroll progress -->
+<app-scroll-progress></app-scroll-progress>
+
+<!-- Navigation -->
+<app-navbar></app-navbar>
+
+<!-- Page content -->
+<main>
+  <app-hero />
+  <app-about />
+  <app-skills />
+  <app-experience />
+  <app-projects />
+  <app-services />
+  <app-achievements />
+  <app-contact />
+</main>
+
+<!-- Footer -->
+<app-footer />
+
+<!-- Back to top -->
+<button id="toTop" #toTop class="to-top" type="button" (click)="scrollTop()" aria-label="Back to top">
+  <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+    <path d="M12 19V5M5 12l7-7 7 7" stroke-linecap="round" stroke-linejoin="round" />
+  </svg>
+</button>
