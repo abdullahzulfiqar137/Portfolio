@@ -18,16 +18,10 @@ export class ThemeService {
   }
 
   toggle(): void {
-    this.theme.update((t) => (t === 'dark' ? 'light' : 'dark'));
+    this.theme.set('dark');
   }
 
   private initial(): ThemeMode {
-    if (isPlatformBrowser(this.platformId)) {
-      const saved = localStorage.getItem('portfolio-theme');
-      if (saved === 'dark' || saved === 'light') return saved;
-      const prefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
-      return prefersLight ? 'light' : 'dark';
-    }
     return 'dark';
   }
 }

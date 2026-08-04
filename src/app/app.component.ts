@@ -19,7 +19,6 @@ import { SkillsComponent } from './components/skills.component';
 import { ExperienceComponent } from './components/experience.component';
 import { ProjectsComponent } from './components/projects.component';
 import { ServicesComponent } from './components/services.component';
-import { AchievementsComponent } from './components/achievements.component';
 import { ContactComponent } from './components/contact.component';
 import { FooterComponent } from './components/footer.component';
 
@@ -37,7 +36,6 @@ import { FooterComponent } from './components/footer.component';
     ExperienceComponent,
     ProjectsComponent,
     ServicesComponent,
-    AchievementsComponent,
     ContactComponent,
     FooterComponent,
   ],
@@ -80,11 +78,11 @@ export class AppComponent implements OnInit, OnDestroy {
 
     const hide = () => (this.loading = false);
     if (document.readyState === 'complete') {
-      setTimeout(hide, 600);
+      setTimeout(hide, 100);
     } else {
-      window.addEventListener('load', () => setTimeout(hide, 600));
+      window.addEventListener('load', () => setTimeout(hide, 100));
     }
-    setTimeout(hide, 2200);
+    setTimeout(hide, 1000);
   }
 
   private onMouseMove(e: MouseEvent): void {

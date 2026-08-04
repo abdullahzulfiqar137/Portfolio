@@ -19,14 +19,14 @@ import { PROFILE, EDUCATION, LANGUAGES } from '../data/portfolio.data';
             <p>{{ profile.summary }}</p>
             <p>
               Currently pursuing a <strong>BS in Information Technology Management</strong>
-              (5th semester), I combine strong engineering fundamentals with a product
+              (in progress), I combine strong engineering fundamentals with a product
               mindset and a passion for problem solving and continuous learning.
             </p>
             <div class="about-chips">
               <span class="badge-tech">Problem Solver</span>
               <span class="badge-tech">Clean Code</span>
               <span class="badge-tech">Fast Learner</span>
-              <span class="badge-tech">Team Player</span>
+              <span class="badge-tech">Team Collaboration</span>
             </div>
           </div>
 

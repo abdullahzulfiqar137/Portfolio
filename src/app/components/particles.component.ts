@@ -33,19 +33,20 @@ interface Particle {
         height: 100%;
         z-index: 0;
         pointer-events: none;
-        opacity: 0.9;
+        opacity: 0.38;
       }
     `,
   ],
 })
 export class ParticlesComponent implements AfterViewInit, OnDestroy {
   @ViewChild('canvas') canvasRef!: ElementRef<HTMLCanvasElement>;
-  @Input() count = 70;
+  @Input() count = 28;
 
   private ctx?: CanvasRenderingContext2D;
   private particles: Particle[] = [];
   private raf = 0;
   private resizeHandler = () => this.resize();
+  private visibilityHandler = () => this.onVisibilityChange();
 
   constructor(
     @Inject(PLATFORM_ID) private platformId: object,
@@ -59,6 +60,7 @@ export class ParticlesComponent implements AfterViewInit, OnDestroy {
     this.resize();
     this.seed();
     window.addEventListener('resize', this.resizeHandler);
+    document.addEventListener('visibilitychange', this.visibilityHandler);
     this.zone.runOutsideAngular(() => this.loop());
   }
 
@@ -74,13 +76,14 @@ export class ParticlesComponent implements AfterViewInit, OnDestroy {
   private seed(): void {
     const w = window.innerWidth;
     const h = window.innerHeight;
-    this.particles = Array.from({ length: this.count }, () => ({
+    const count = window.innerWidth < 768 ? Math.min(this.count, 10) : this.count;
+    this.particles = Array.from({ length: count }, () => ({
       x: Math.random() * w,
       y: Math.random() * h,
-      vx: (Math.random() - 0.5) * 0.35,
-      vy: (Math.random() - 0.5) * 0.35,
-      r: Math.random() * 1.8 + 0.6,
-      alpha: Math.random() * 0.5 + 0.2,
+      vx: (Math.random() - 0.5) * 0.16,
+      vy: (Math.random() - 0.5) * 0.16,
+      r: Math.random() * 1.1 + 0.35,
+      alpha: Math.random() * 0.28 + 0.08,
     }));
   }
 
@@ -100,8 +103,8 @@ export class ParticlesComponent implements AfterViewInit, OnDestroy {
       this.ctx.beginPath();
       this.ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
       const grad = this.ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.r * 4);
-      grad.addColorStop(0, `rgba(77,163,255,${p.alpha})`);
-      grad.addColorStop(1, 'rgba(123,92,255,0)');
+      grad.addColorStop(0, `rgba(255,98,61,${p.alpha})`);
+      grad.addColorStop(1, 'rgba(255,66,35,0)');
       this.ctx.fillStyle = grad;
       this.ctx.fill();
 
@@ -110,11 +113,11 @@ export class ParticlesComponent implements AfterViewInit, OnDestroy {
         const dx = p.x - q.x;
         const dy = p.y - q.y;
         const dist = Math.hypot(dx, dy);
-        if (dist < 120) {
+        if (dist < 100) {
           this.ctx.beginPath();
           this.ctx.moveTo(p.x, p.y);
           this.ctx.lineTo(q.x, q.y);
-          this.ctx.strokeStyle = `rgba(123,92,255,${0.12 * (1 - dist / 120)})`;
+          this.ctx.strokeStyle = `rgba(255,91,54,${0.055 * (1 - dist / 100)})`;
           this.ctx.lineWidth = 1;
           this.ctx.stroke();
         }
@@ -123,10 +126,20 @@ export class ParticlesComponent implements AfterViewInit, OnDestroy {
     this.raf = requestAnimationFrame(this.loop);
   };
 
+  private onVisibilityChange(): void {
+    if (document.hidden) {
+      cancelAnimationFrame(this.raf);
+      this.raf = 0;
+    } else if (!this.raf) {
+      this.loop();
+    }
+  }
+
   ngOnDestroy(): void {
     cancelAnimationFrame(this.raf);
     if (isPlatformBrowser(this.platformId)) {
       window.removeEventListener('resize', this.resizeHandler);
+      document.removeEventListener('visibilitychange', this.visibilityHandler);
     }
   }
 }

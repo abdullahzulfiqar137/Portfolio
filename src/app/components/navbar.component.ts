@@ -29,7 +29,7 @@ import { PROFILE } from '../data/portfolio.data';
             <span class="theme-icon">{{ theme.theme() === 'dark' ? '☾' : '☀' }}</span>
           </button>
           <a class="btn btn-premium btn-primary-premium nav-cta" [href]="'#contact'">
-            Let's Talk
+            Hire Me
           </a>
           <button
             class="hamburger"
@@ -88,7 +88,7 @@ import { PROFILE } from '../data/portfolio.data';
         font-size: 0.85rem;
         background: linear-gradient(135deg, var(--blue), var(--violet));
         color: #fff;
-        box-shadow: 0 8px 24px rgba(77, 163, 255, 0.35);
+        box-shadow: 0 8px 24px rgba(255, 75, 45, 0.3);
       }
       .brand-name {
         font-size: 1.05rem;
@@ -138,7 +138,9 @@ import { PROFILE } from '../data/portfolio.data';
         font-size: 1.05rem;
       }
       .nav-cta {
-        padding: 9px 16px;
+        padding: 10px 22px;
+        border-radius: 999px;
+        box-shadow: 0 8px 25px rgba(255, 77, 45, 0.3);
       }
       .hamburger {
         display: none;

@@ -1,10 +1,10 @@
 ABDULLAH ZULFIQAR
 .NET Full Stack Developer
-Email: abdullah.zulfiqar.dev@gmail.com
-Phone: +92 300 0000000
-LinkedIn: linkedin.com/in/abdullah-zulfiqar
-GitHub: github.com/abdullah-zulfiqar
-Location: Pakistan
+Email: abdullahzulfiqar137@gmail.com
+Phone: +92 333 4320471
+LinkedIn: https://www.linkedin.com/in/abdullah-zulfiqar-/
+GitHub: https://github.com/abdullahzulfiqar137
+Location: Lahore, Pakistan
 
 PROFESSIONAL SUMMARY
 .NET Full Stack Developer with 1+ years of experience building scalable, production-grade web applications using ASP.NET Core, Angular and SQL Server. Currently pursuing a BS in Information Technology Management. Passionate about clean architecture, problem solving and reliable software delivery.
@@ -27,7 +27,7 @@ Full Stack .NET Developer - Awatech Technology Solutions (2024 to Present)
 PROJECTS
 Student Management System: ASP.NET Core Web API, Angular, SQL Server, JWT Authentication.
 Inventory Management System: Angular, .NET Core, SQL Server.
-AI Powered Business Operating System: SaaS Platform, AI Project Manager, Team Collaboration, Task Management, Real-time Communication.
+BizOps Platform: AI-powered business OS with project management, team collaboration, task management and real-time communication.
 
 EDUCATION
 BS in Information Technology Management (in progress)

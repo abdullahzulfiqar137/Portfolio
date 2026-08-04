@@ -26,6 +26,8 @@ export interface Project {
   demo: string;
   github: string;
   gradient: string;
+  video?: string;
+  videoPreview?: string;
   featured?: boolean;
 }
 
@@ -54,27 +56,21 @@ export const PROFILE = {
   tagline:
     'Building Scalable Web Applications with ASP.NET Core, Angular, and SQL Server.',
   summary:
-    'Dynamic and results-oriented .NET Full Stack Developer with 1+ year of hands-on experience designing and developing robust, scalable web applications. Proficient in high-performance backend systems with ASP.NET Core, C#, Entity Framework Core and SQL Server, and intuitive, responsive frontends with Angular and modern web technologies.',
+    '.NET Full Stack Developer with 1+ years of experience building scalable, production-grade web applications using ASP.NET Core, Angular and SQL Server. Currently pursuing a BS in Information Technology Management. Passionate about clean architecture, problem solving and reliable software delivery.',
   email: 'abdullahzulfiqar137@gmail.com',
   phone: '+92 333 4320471',
   location: 'Lahore, Pakistan',
-  linkedin: 'https://www.linkedin.com/in/abdullah-zulfiqar-',
+  linkedin: 'https://www.linkedin.com/in/abdullah-zulfiqar-/',
   github: 'https://github.com/abdullahzulfiqar137',
-  resumeUrl: 'assets/resume/abdullah-zulfiqar-resume.txt',
+  resumeUrl: 'assets/resume/Abdullah_Zulfiqar_Resume.pdf',
 };
 
 export const EDUCATION = [
   {
-    degree: 'BS Information Technology Management (Post ADP)',
+    degree: 'BS in Information Technology Management',
     school: 'NCBA&E (National College of Business Administration & Economics)',
     location: 'Lahore, Pakistan',
-    period: 'In Progress — 5th Semester',
-  },
-  {
-    degree: 'Associate Degree Program (ADP) in Information Technology Management',
-    school: 'Riphah International University',
-    location: 'Lahore, Pakistan',
-    period: 'Completed',
+    period: 'In Progress',
   },
 ];
 
@@ -105,6 +101,8 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
       { name: 'C#', level: 92, icon: 'C#' },
       { name: '.NET Core Web API', level: 90, icon: 'API' },
       { name: 'Entity Framework Core', level: 88, icon: 'EF' },
+      { name: 'LINQ', level: 86, icon: 'LQ' },
+      { name: 'Repository Pattern', level: 85, icon: 'RP' },
       { name: 'RESTful APIs', level: 90, icon: 'REST' },
       { name: 'Code First Approach', level: 87, icon: 'CF' },
     ],
@@ -116,6 +114,7 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
       { name: 'SQL Server', level: 88, icon: 'SQL' },
       { name: 'Database Design', level: 86, icon: 'DB' },
       { name: 'SQL Queries', level: 87, icon: 'Q' },
+      { name: 'Stored Procedures', level: 84, icon: 'SP' },
       { name: 'CRUD Operations', level: 90, icon: 'CRUD' },
     ],
   },
@@ -128,6 +127,8 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
       { name: 'SSMS', level: 85, icon: 'SS' },
       { name: 'Git', level: 90, icon: 'G' },
       { name: 'GitHub', level: 90, icon: 'GH' },
+      { name: 'Postman', level: 88, icon: 'PM' },
+      { name: 'Swagger', level: 87, icon: 'SW' },
     ],
   },
 ];
@@ -139,48 +140,28 @@ export const EXPERIENCE: ExperienceItem[] = [
     period: '2024 — Present',
     location: 'Lahore, Pakistan',
     responsibilities: [
-      'Developed highly responsive, user-centric frontend applications using Angular, TypeScript, HTML5, CSS3 and JavaScript',
-      'Designed and implemented scalable, secure RESTful APIs using ASP.NET Core and .NET Core Web API',
-      'Implemented Entity Framework Core using the Code First approach for efficient ORM-based data management',
-      'Designed, optimized and maintained SQL Server databases with proper schema design, indexing and query optimization',
-      'Implemented full CRUD operations and integrated RESTful APIs for smooth frontend-backend communication',
-      'Troubleshot and resolved critical bugs while optimizing application performance for enterprise solutions',
+      'Developed Angular applications with modern, responsive user interfaces',
+      'Built REST APIs using ASP.NET Core following clean architecture',
+      'Implemented Entity Framework Core Code First with migrations',
+      'Designed SQL Server databases with optimized schemas',
+      'Performed CRUD operations using Repository and Unit of Work patterns',
+      'Optimized application performance through caching, indexing and lazy loading',
     ],
   },
 ];
 
 export const PROJECTS: Project[] = [
   {
-    title: 'Student Management System',
-    tagline: 'End-to-end academic platform',
-    description:
-      'A complete student management platform with role-based access, secure JWT authentication, attendance, grades and reporting built on ASP.NET Core Web API and Angular.',
-    tags: ['ASP.NET Core Web API', 'Angular', 'SQL Server', 'JWT Authentication'],
-    demo: 'https://github.com/abdullahzulfiqar137',
-    github: 'https://github.com/abdullahzulfiqar137',
-    gradient: 'linear-gradient(135deg, rgba(77,163,255,.35), rgba(123,92,255,.35))',
-    featured: true,
-  },
-  {
-    title: 'Inventory Management System',
-    tagline: 'Real-time stock control',
-    description:
-      'A robust inventory and warehouse management system with stock tracking, purchase orders, supplier management and analytics dashboards.',
-    tags: ['.NET Core', 'Angular', 'SQL Server'],
-    demo: 'https://github.com/abdullahzulfiqar137',
-    github: 'https://github.com/abdullahzulfiqar137',
-    gradient: 'linear-gradient(135deg, rgba(42,246,255,.30), rgba(77,163,255,.35))',
-    featured: true,
-  },
-  {
-    title: 'AI Powered Business OS',
-    tagline: 'SaaS for modern teams',
+    title: 'BizOps Platform',
+    tagline: 'AI-powered business OS for modern teams',
     description:
       'An AI-powered business operating system featuring an AI project manager, team collaboration, task management and real-time communication for distributed teams.',
     tags: ['SaaS Platform', 'AI Project Manager', 'Team Collaboration', 'Task Management', 'Real-time'],
-    demo: 'https://github.com/abdullahzulfiqar137',
-    github: 'https://github.com/abdullahzulfiqar137',
+    demo: 'https://github.com/abdullahzulfiqar137/bizops-platform',
+    github: 'https://github.com/abdullahzulfiqar137/bizops-platform',
     gradient: 'linear-gradient(135deg, rgba(123,92,255,.40), rgba(255,79,216,.30))',
+    video: 'assets/videos/bizops-platform-demo.mp4',
+    videoPreview: 'assets/videos/bizops-platform-preview.mp4',
     featured: true,
   },
 ];
@@ -227,6 +208,6 @@ export const ACHIEVEMENTS: Achievement[] = [
 
 export const SOCIALS: SocialLink[] = [
   { label: 'GitHub', href: 'https://github.com/abdullahzulfiqar137', icon: 'github' },
-  { label: 'LinkedIn', href: 'https://www.linkedin.com/in/abdullah-zulfiqar-', icon: 'linkedin' },
+  { label: 'LinkedIn', href: 'https://www.linkedin.com/in/abdullah-zulfiqar-/', icon: 'linkedin' },
   { label: 'Email', href: 'mailto:abdullahzulfiqar137@gmail.com', icon: 'mail' },
 ];

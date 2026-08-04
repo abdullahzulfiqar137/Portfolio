@@ -1,5 +1,5 @@
 import { Component, signal } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, NgForm } from '@angular/forms';
 import { RevealDirective } from '../directives/reveal.directive';
 import { PROFILE } from '../data/portfolio.data';
 
@@ -66,21 +66,27 @@ import { PROFILE } from '../data/portfolio.data';
           >
             <div class="field">
               <label for="name">Name</label>
-              <input id="name" name="name" type="text" [(ngModel)]="model.name" required #name="ngModel" placeholder="Your name" />
+              <input id="name" name="name" type="text" [(ngModel)]="model.name" required minlength="2" autocomplete="name" #name="ngModel" placeholder="Your name" [attr.aria-invalid]="name.invalid && name.touched" />
+              @if (name.invalid && name.touched) { <small class="field-error">Please enter your name.</small> }
             </div>
             <div class="field">
               <label for="email">Email</label>
-              <input id="email" name="email" type="email" [(ngModel)]="model.email" required email #email="ngModel" placeholder="you@company.com" />
+              <input id="email" name="email" type="email" [(ngModel)]="model.email" required email autocomplete="email" #email="ngModel" placeholder="you@company.com" [attr.aria-invalid]="email.invalid && email.touched" />
+              @if (email.invalid && email.touched) { <small class="field-error">Please enter a valid email.</small> }
             </div>
             <div class="field">
               <label for="message">Message</label>
-              <textarea id="message" name="message" rows="4" [(ngModel)]="model.message" required #message="ngModel" placeholder="Tell me about your project..."></textarea>
+              <textarea id="message" name="message" rows="4" [(ngModel)]="model.message" required minlength="10" #message="ngModel" placeholder="Tell me about your project..." [attr.aria-invalid]="message.invalid && message.touched"></textarea>
+              @if (message.invalid && message.touched) { <small class="field-error">Please add at least 10 characters.</small> }
             </div>
-            <button class="btn btn-premium btn-primary-premium submit-btn" type="submit" [disabled]="sent()">
-              {{ sent() ? 'Message Sent ✓' : 'Send Message' }}
+            <button class="btn btn-premium btn-primary-premium submit-btn" type="submit" [disabled]="form.invalid || sending()">
+              {{ sending() ? 'Sending…' : 'Send Message' }}
             </button>
             @if (sent()) {
-              <p class="form-note" role="status">Thanks! This demo form logs to console — wire it to your backend or Formspree.</p>
+              <p class="form-note success" role="status">Message sent successfully. I’ll get back to you soon.</p>
+            }
+            @if (submitError()) {
+              <p class="form-note error" role="alert">{{ submitError() }}</p>
             }
           </form>
         </div>
@@ -209,6 +215,7 @@ import { PROFILE } from '../data/portfolio.data';
       .field textarea::placeholder {
         color: var(--muted2);
       }
+      .field-error { color: #ff8b8b; font-size: 0.78rem; }
       .submit-btn {
         width: 100%;
         justify-content: center;
@@ -225,6 +232,8 @@ import { PROFILE } from '../data/portfolio.data';
         color: var(--muted2);
         line-height: 1.5;
       }
+      .form-note.success { color: #72dda9; }
+      .form-note.error { color: #ff8b8b; }
       @media (max-width: 820px) {
         .contact-grid {
           grid-template-columns: 1fr;
@@ -236,15 +245,46 @@ import { PROFILE } from '../data/portfolio.data';
 export class ContactComponent {
   readonly profile = PROFILE;
   readonly sent = signal(false);
+  readonly sending = signal(false);
+  readonly submitError = signal('');
   readonly tel = 'tel:' + PROFILE.phone.replace(/\s/g, '');
   model = { name: '', email: '', message: '' };
 
-  submit(form: { valid: boolean | null }): void {
-    if (!form.valid) return;
-    // Demo handler — replace with real endpoint / Formspree integration.
-    console.log('Contact form submitted:', this.model);
-    this.sent.set(true);
-    this.model = { name: '', email: '', message: '' };
-    setTimeout(() => this.sent.set(false), 4000);
+  async submit(form: NgForm): Promise<void> {
+    if (form.invalid) {
+      form.control.markAllAsTouched();
+      return;
+    }
+    this.sending.set(true);
+    this.sent.set(false);
+    this.submitError.set('');
+
+    try {
+      const response = await fetch(`https://formsubmit.co/ajax/${PROFILE.email}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        body: JSON.stringify({
+          name: this.model.name,
+          email: this.model.email,
+          message: this.model.message,
+          _subject: `Portfolio enquiry from ${this.model.name}`,
+          _template: 'table',
+          _captcha: 'false',
+        }),
+      });
+
+      if (!response.ok) throw new Error('Message service unavailable');
+
+      this.sent.set(true);
+      this.model = { name: '', email: '', message: '' };
+      form.resetForm(this.model);
+    } catch {
+      this.submitError.set(`Message could not be sent. Please email me directly at ${PROFILE.email}.`);
+    } finally {
+      this.sending.set(false);
+    }
   }
 }
