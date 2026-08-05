@@ -331,6 +331,10 @@ import { PROJECTS } from '../data/portfolio.data';
         .projects-grid {
           grid-template-columns: 1fr;
         }
+        .video-modal { padding: 8px; }
+        .video-modal-panel { width: 100%; border-radius: 9px; }
+        .video-close { width: 38px; height: 38px; top: 8px; right: 8px; }
+        .project-card:only-child .proj-visual { height: 185px; }
       }
     `,
   ],

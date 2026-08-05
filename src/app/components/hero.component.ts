@@ -68,6 +68,7 @@ import { RevealDirective } from '../directives/reveal.directive';
     :host { display: block; }
     .hero {
       min-height: 100vh;
+      min-height: 100svh;
       position: relative;
       overflow: hidden;
       padding: 130px 0 34px;
@@ -123,9 +124,23 @@ import { RevealDirective } from '../directives/reveal.directive';
       .overview { grid-template-columns: 1.6fr repeat(2, 1fr); }.overview-copy { grid-row: span 2; }
     }
     @media (max-width: 720px) {
-      .hero { padding-top: 110px; }.hero-layout { display: flex; flex-direction: column; text-align: center; }.intro { margin-inline: auto; }
+      .hero { padding: 105px 0 28px; }.hero-layout { display: flex; flex-direction: column; text-align: center; min-height: auto; }.intro { margin-inline: auto; }
       .actions { justify-content: center; }.portrait-wrap { height: 420px; order: 2; margin-top: -35px; }.hero-copy { order: 1; z-index: 2; }
       .hero-orbit { left: 50%; top: 61%; width: 310px; }.overview { margin-top: -45px; grid-template-columns: 1fr 1fr; padding: 22px; }.overview-copy { grid-column: 1 / -1; grid-row: auto; text-align: center; }
+    }
+    @media (max-width: 480px) {
+      .hero { padding-top: 92px; }
+      h1 { font-size: clamp(2.35rem, 12vw, 3.25rem); }
+      .hello { font-size: .82rem; }
+      .intro { font-size: .92rem; line-height: 1.6; }
+      .actions { width: 100%; gap: 10px; }
+      .actions a { width: 100%; min-height: 48px; gap: 14px; }
+      .portrait-wrap { height: 350px; margin-top: -24px; }
+      .hero-orbit { top: 59%; width: 250px; }
+      .overview { margin-top: -30px; gap: 10px; padding: 18px 12px; border-radius: 14px; }
+      .overview h2 { font-size: 1.2rem; }
+      .stat { min-height: 88px; padding: 8px 4px; }
+      .stat strong { font-size: .76rem; }
     }
   `]
 })

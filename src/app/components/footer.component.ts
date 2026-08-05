@@ -144,6 +144,10 @@ import { PROFILE, SOCIALS } from '../data/portfolio.data';
           align-items: flex-start;
         }
       }
+      @media (max-width: 480px) {
+        .footer-inner, .footer-bottom { align-items: center; text-align: center; justify-content: center; }
+        .footer-nav { justify-content: center; gap: 14px; }
+      }
     `,
   ],
 })

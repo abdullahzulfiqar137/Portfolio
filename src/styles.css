@@ -51,6 +51,8 @@
 
 html{
   scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 body{
   margin:0;
@@ -60,9 +62,11 @@ body{
   background: #090808;
   color: var(--text);
   overflow-x:hidden;
+  min-width: 320px;
 }
 
 *{ box-sizing:border-box; }
+img, video, canvas, svg{ max-width: 100%; }
 a{ color: inherit; text-decoration:none; }
 button, input, textarea{
   font: inherit;
@@ -85,6 +89,8 @@ button, input, textarea{
 
 .container{
   max-width: 1120px;
+  width: 100%;
+  padding-inline: 24px;
 }
 
 .section{
@@ -591,6 +597,13 @@ body .nav-cta{ color: #fff; }
   body .skills-grid{ grid-template-columns: 1fr 1fr !important; }
   body .services-grid{ grid-template-columns: repeat(3,1fr) !important; }
 }
+@media (max-width: 900px){
+  .section{ padding: 88px 0; }
+  .section-title{ font-size: clamp(2rem, 7vw, 3.25rem); }
+  body .about-copy,
+  body .exp-card,
+  body .contact-form{ padding: 28px !important; }
+}
 @media (max-width: 760px){
   .section{ padding: 78px 0; }
   body .skills-grid,
@@ -600,4 +613,22 @@ body .nav-cta{ color: #fff; }
   body .exp-list{ grid-template-columns: 1fr; }
   body .ach-card + .ach-card{ border-left: 0; }
   body .ach-grid{ padding: 20px 10px !important; }
+  .glass{ backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
+  .to-top{ right: 14px; bottom: max(14px, env(safe-area-inset-bottom)); }
+}
+@media (max-width: 480px){
+  .container{ padding-inline: 16px; }
+  .section{ padding: 68px 0; }
+  .section-title{ font-size: clamp(1.85rem, 10vw, 2.6rem); }
+  .section-subtitle{ font-size: .93rem; }
+  body .about-copy,
+  body .edu-card,
+  body .lang-card,
+  body .exp-card,
+  body .contact-form,
+  body .skill-card,
+  body .svc-card{ padding: 21px !important; }
+  body .contact-item{ padding: 14px !important; }
+  .badge-tech{ padding: 7px 10px; font-size: .78rem; }
+  .btn-premium{ min-height: 44px; }
 }

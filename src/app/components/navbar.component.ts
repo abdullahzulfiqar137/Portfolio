@@ -219,6 +219,13 @@ import { PROFILE } from '../data/portfolio.data';
           display: none;
         }
       }
+      @media (max-width: 480px) {
+        .navbar { padding: 12px 0; }
+        .nav-links { width: 100vw; }
+        .brand-name { font-size: .94rem; }
+        .brand-mark { width: 32px; height: 32px; }
+        .nav-actions { gap: 6px; }
+      }
     `,
   ],
 })
