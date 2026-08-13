@@ -67,9 +67,11 @@ body{
 
 *{ box-sizing:border-box; }
 img, video, canvas, svg{ max-width: 100%; }
+img, video{ height: auto; }
 a{ color: inherit; text-decoration:none; }
 button, input, textarea{
   font: inherit;
+  max-width: 100%;
 }
 
 ::selection{ background: rgba(255,86,56,.38); color: #fff; }
@@ -90,6 +92,7 @@ button, input, textarea{
 .container{
   max-width: 1120px;
   width: 100%;
+  margin-inline: auto;
   padding-inline: 24px;
 }
 
@@ -631,4 +634,33 @@ body .nav-cta{ color: #fff; }
   body .contact-item{ padding: 14px !important; }
   .badge-tech{ padding: 7px 10px; font-size: .78rem; }
   .btn-premium{ min-height: 44px; }
+}
+
+/* Cross-device safeguards */
+@media (max-width: 380px){
+  .container{ padding-inline: 12px; }
+  .section{ padding-block: 58px; }
+  .section-title{ font-size: clamp(1.72rem, 9.5vw, 2.25rem); }
+  body .about-copy,
+  body .edu-card,
+  body .lang-card,
+  body .exp-card,
+  body .contact-form,
+  body .skill-card,
+  body .svc-card{ padding: 17px !important; }
+  body .contact-item{ padding: 12px !important; }
+}
+
+@media (max-height: 500px) and (orientation: landscape){
+  .section{ padding-block: 56px; }
+  .to-top{ width: 42px; height: 42px; }
+}
+
+@media (min-width: 1440px){
+  .container{ max-width: 1240px; }
+}
+
+@media (pointer: coarse){
+  a, button{ -webkit-tap-highlight-color: transparent; }
+  button, .btn-premium{ min-height: 44px; }
 }

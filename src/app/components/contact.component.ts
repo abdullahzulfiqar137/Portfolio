@@ -176,7 +176,7 @@ import { PROFILE } from '../data/portfolio.data';
       .contact-item strong {
         color: var(--text);
         font-weight: 600;
-        word-break: break-all;
+        overflow-wrap: anywhere;
       }
       .contact-form {
         padding: 26px;

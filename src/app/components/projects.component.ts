@@ -32,7 +32,7 @@ import { PROJECTS } from '../data/portfolio.data';
                   <video
                     class="proj-video"
                     [src]="project.videoPreview || project.video"
-                    autoplay
+                    [autoplay]="!!project.videoPreview"
                     muted
                     loop
                     playsinline
@@ -93,7 +93,7 @@ import { PROJECTS } from '../data/portfolio.data';
     </section>
 
     @if (activeVideo()) {
-      <div class="video-modal" role="dialog" aria-modal="true" aria-label="BizOps Platform full video" (click)="closeVideo()">
+      <div class="video-modal" role="dialog" aria-modal="true" aria-label="Project demonstration video" (click)="closeVideo()">
         <div class="video-modal-panel" (click)="$event.stopPropagation()">
           <button class="video-close" type="button" (click)="closeVideo()" aria-label="Close video">×</button>
           <video class="full-video" [src]="activeVideo()" autoplay muted controls playsinline></video>
@@ -287,7 +287,7 @@ import { PROJECTS } from '../data/portfolio.data';
         align-items: flex-start;
         gap: 12px;
       }
-      .proj-card h3 {
+      .project-card h3 {
         font-size: 1.08rem;
         font-weight: 900;
         margin: 0;
@@ -335,6 +335,17 @@ import { PROJECTS } from '../data/portfolio.data';
         .video-modal-panel { width: 100%; border-radius: 9px; }
         .video-close { width: 38px; height: 38px; top: 8px; right: 8px; }
         .project-card:only-child .proj-visual { height: 185px; }
+        .proj-body { padding: 20px 16px; }
+        .proj-actions { flex-wrap: wrap; gap: 10px; }
+        .proj-link { min-height: 44px; }
+        .full-video { max-height: calc(100dvh - 16px); }
+      }
+      @media (max-width: 380px) {
+        .proj-top { flex-direction: column; }
+        .proj-flag { align-self: flex-start; }
+        .project-card:only-child .proj-visual,
+        .proj-visual { height: 160px; }
+        .video-label { left: 9px; bottom: 9px; font-size: 0.61rem; }
       }
     `,
   ],

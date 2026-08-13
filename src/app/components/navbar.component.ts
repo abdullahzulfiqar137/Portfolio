@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, HostListener, OnDestroy, signal } from '@angular/core';
 import { ThemeService } from '../services/theme.service';
 import { PROFILE } from '../data/portfolio.data';
 
@@ -13,7 +13,7 @@ import { PROFILE } from '../data/portfolio.data';
           <span class="brand-name">Abdullah<span class="brand-dot">.</span></span>
         </a>
 
-        <nav class="nav-links" [class.show]="menuOpen()" aria-label="Primary">
+        <nav id="primary-navigation" class="nav-links" [class.show]="menuOpen()" aria-label="Primary">
           @for (item of links; track item.href) {
             <a [href]="item.href" (click)="closeMenu()">{{ item.label }}</a>
           }
@@ -36,7 +36,8 @@ import { PROFILE } from '../data/portfolio.data';
             type="button"
             (click)="toggleMenu()"
             [attr.aria-expanded]="menuOpen()"
-            aria-label="Toggle menu"
+            aria-controls="primary-navigation"
+            [attr.aria-label]="menuOpen() ? 'Close navigation menu' : 'Open navigation menu'"
           >
             <span [class.x]="menuOpen()"></span>
           </button>
@@ -185,35 +186,95 @@ import { PROFILE } from '../data/portfolio.data';
       }
 
       @media (max-width: 860px) {
+        .navbar,
+        .navbar.scrolled {
+          backdrop-filter: none;
+          -webkit-backdrop-filter: none;
+        }
         .nav-links {
+          counter-reset: mobile-nav;
           position: fixed;
-          inset: 0 0 0 auto;
+          top: 0;
+          right: 0;
+          bottom: auto;
           width: min(78vw, 320px);
+          height: 100vh;
+          height: 100dvh;
           flex-direction: column;
           align-items: flex-start;
           justify-content: flex-start;
-          gap: 4px;
-          padding: 96px 22px 22px;
-          background: rgba(7, 10, 18, 0.92);
+          gap: 8px;
+          padding: max(96px, calc(env(safe-area-inset-top) + 80px)) 22px 28px;
+          overflow-y: auto;
+          overscroll-behavior: contain;
+          background:
+            radial-gradient(circle at 100% 0, rgba(255, 79, 45, 0.13), transparent 34%),
+            rgba(7, 10, 18, 0.985);
           backdrop-filter: blur(20px);
           -webkit-backdrop-filter: blur(20px);
           border-left: 1px solid var(--stroke);
+          box-shadow: -20px 0 60px rgba(0, 0, 0, 0.38);
           transform: translateX(100%);
           transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
         }
         :host-context([data-theme='light']) .nav-links {
-          background: rgba(246, 248, 255, 0.95);
+          background:
+            radial-gradient(circle at 100% 0, rgba(255, 79, 45, 0.12), transparent 34%),
+            rgba(246, 248, 255, 0.985);
+        }
+        .nav-links::before {
+          content: 'Navigation';
+          display: block;
+          width: 100%;
+          margin: 0 0 12px;
+          padding: 0 14px 14px;
+          border-bottom: 1px solid var(--stroke);
+          color: var(--blue);
+          font-size: 0.68rem;
+          font-weight: 800;
+          letter-spacing: 0.18em;
+          text-transform: uppercase;
         }
         .nav-links.show {
           transform: translateX(0);
         }
         .nav-links a {
+          counter-increment: mobile-nav;
           width: 100%;
-          padding: 12px 14px;
-          font-size: 1rem;
+          display: flex;
+          align-items: center;
+          gap: 14px;
+          padding: 13px 14px;
+          border-radius: 10px;
+          font-size: 0.9rem;
+          transition: color 0.2s ease, background 0.2s ease, transform 0.2s ease;
+        }
+        .nav-links a::before {
+          content: '0' counter(mobile-nav);
+          color: rgba(255, 91, 61, 0.72);
+          font-size: 0.62rem;
+          font-weight: 800;
+          letter-spacing: 0.08em;
+        }
+        .nav-links a:hover,
+        .nav-links a:focus-visible {
+          color: var(--text);
+          background: rgba(255, 79, 45, 0.1);
+          transform: translateX(4px);
+        }
+        .nav-links a:last-child {
+          margin-top: 10px;
+          justify-content: center;
+          color: #fff;
+          background: linear-gradient(135deg, #ff5b3d, #dc341d);
+          box-shadow: 0 10px 28px rgba(255, 79, 45, 0.22);
+        }
+        .nav-links a:last-child::before {
+          display: none;
         }
         .hamburger {
           display: block;
+          z-index: 2;
         }
         .nav-cta {
           display: none;
@@ -229,7 +290,7 @@ import { PROFILE } from '../data/portfolio.data';
     `,
   ],
 })
-export class NavbarComponent {
+export class NavbarComponent implements OnDestroy {
   readonly links = [
     { label: 'Home', href: '#home' },
     { label: 'About', href: '#about' },
@@ -254,8 +315,24 @@ export class NavbarComponent {
 
   toggleMenu(): void {
     this.menuOpen.update((v) => !v);
+    document.body.style.overflow = this.menuOpen() ? 'hidden' : '';
   }
   closeMenu(): void {
     this.menuOpen.set(false);
+    document.body.style.overflow = '';
+  }
+
+  @HostListener('document:keydown.escape')
+  onEscape(): void {
+    if (this.menuOpen()) this.closeMenu();
+  }
+
+  @HostListener('window:resize')
+  onResize(): void {
+    if (window.innerWidth > 860 && this.menuOpen()) this.closeMenu();
+  }
+
+  ngOnDestroy(): void {
+    document.body.style.overflow = '';
   }
 }

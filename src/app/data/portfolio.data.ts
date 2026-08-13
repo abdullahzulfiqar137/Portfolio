@@ -152,6 +152,18 @@ export const EXPERIENCE: ExperienceItem[] = [
 
 export const PROJECTS: Project[] = [
   {
+    title: 'HospitalSaaS',
+    tagline: 'Modern hospital management, simplified',
+    description:
+      'A healthcare SaaS platform designed to streamline day-to-day hospital operations through a modern, intuitive and centralized management experience.',
+    tags: ['Healthcare SaaS', 'Hospital Management', 'Dashboard', 'Responsive UI', 'Full Stack'],
+    demo: 'https://github.com/abdullahzulfiqar137/HospitalSaaS',
+    github: 'https://github.com/abdullahzulfiqar137/HospitalSaaS',
+    gradient: 'linear-gradient(135deg, rgba(16,185,129,.42), rgba(14,165,233,.32))',
+    video: 'assets/videos/hospital-saas-demo.mp4',
+    featured: true,
+  },
+  {
     title: 'BizOps Platform',
     tagline: 'AI-powered business OS for modern teams',
     description:
@@ -162,7 +174,6 @@ export const PROJECTS: Project[] = [
     gradient: 'linear-gradient(135deg, rgba(123,92,255,.40), rgba(255,79,216,.30))',
     video: 'assets/videos/bizops-platform-demo.mp4',
     videoPreview: 'assets/videos/bizops-platform-preview.mp4',
-    featured: true,
   },
 ];
 
