@@ -535,8 +535,8 @@ body .about-copy::after{
 }
 body .lang-item{ border-radius: 7px !important; border-color: rgba(255,94,61,.12) !important; }
 
-body .skills-grid{ grid-template-columns: repeat(4,1fr) !important; gap: 14px !important; }
-body .skill-card{ padding: 23px 18px !important; border-radius: 10px !important; box-shadow: none !important; }
+body .skills-grid{ grid-template-columns: repeat(2,minmax(0,1fr)) !important; gap: 18px !important; }
+body .skill-card{ min-width: 0; padding: 24px 22px !important; border-radius: 10px !important; box-shadow: none !important; }
 body .skill-cat-icon,
 body .skill-badge{
   border-color: rgba(255,91,58,.3) !important;
@@ -597,7 +597,6 @@ body .nav-cta{ color: #fff; }
 }
 
 @media (max-width: 1050px){
-  body .skills-grid{ grid-template-columns: 1fr 1fr !important; }
   body .services-grid{ grid-template-columns: repeat(3,1fr) !important; }
 }
 @media (max-width: 900px){

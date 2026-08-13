@@ -113,17 +113,24 @@ import { SKILL_CATEGORIES } from '../data/portfolio.data';
       .skill-list {
         display: flex;
         flex-direction: column;
-        gap: 16px;
+        gap: 14px;
+      }
+      .skill-row {
+        gap: 12px;
       }
       .skill-name {
-        display: inline-flex;
+        display: flex;
         align-items: center;
         gap: 9px;
+        min-width: 0;
         font-weight: 600;
       }
       .skill-badge {
-        width: 26px;
+        width: auto;
+        min-width: 30px;
         height: 26px;
+        flex: 0 0 auto;
+        padding-inline: 6px;
         border-radius: 8px;
         display: grid;
         place-items: center;
@@ -134,6 +141,7 @@ import { SKILL_CATEGORIES } from '../data/portfolio.data';
         color: var(--violet);
       }
       .skill-pct {
+        flex: 0 0 auto;
         font-weight: 700;
         font-size: 0.85rem;
         color: var(--muted);
@@ -142,6 +150,16 @@ import { SKILL_CATEGORIES } from '../data/portfolio.data';
         .skills-grid {
           grid-template-columns: 1fr;
         }
+        .skill-card { padding: 20px 18px; }
+        .skill-card-head { margin-bottom: 18px; }
+        .skill-list { gap: 13px; }
+        .skill-name { font-size: 0.92rem; }
+      }
+      @media (max-width: 380px) {
+        .skill-card { padding: 18px 14px; }
+        .skill-name { gap: 7px; font-size: 0.86rem; }
+        .skill-pct { font-size: 0.78rem; }
+        .skill-badge { min-width: 28px; padding-inline: 5px; }
       }
     `,
   ],

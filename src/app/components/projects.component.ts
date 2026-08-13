@@ -32,7 +32,7 @@ import { PROJECTS } from '../data/portfolio.data';
                   <video
                     class="proj-video"
                     [src]="project.videoPreview || project.video"
-                    [autoplay]="!!project.videoPreview"
+                    autoplay
                     muted
                     loop
                     playsinline
