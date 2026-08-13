@@ -10,7 +10,7 @@ import { PROFILE } from '../data/portfolio.data';
       <div class="container nav-inner">
         <a class="brand" href="#home" (click)="closeMenu()">
           <span class="brand-mark">AZ</span>
-          <span class="brand-name">Abdullah<span class="brand-dot">.</span></span>
+          <span class="brand-name">Abdullah Zulfiqar<span class="brand-dot"></span></span>
         </a>
 
         <nav id="primary-navigation" class="nav-links" [class.show]="menuOpen()" aria-label="Primary">
@@ -283,7 +283,7 @@ import { PROFILE } from '../data/portfolio.data';
       @media (max-width: 480px) {
         .navbar { padding: 12px 0; }
         .nav-links { width: 100vw; }
-        .brand-name { font-size: .94rem; }
+        .brand-name { font-size: clamp(.78rem, 3.7vw, .94rem); }
         .brand-mark { width: 32px; height: 32px; }
         .nav-actions { gap: 6px; }
       }
