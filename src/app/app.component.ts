@@ -59,6 +59,17 @@ export class AppComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     if (!isPlatformBrowser(this.platformId)) return;
 
+    // Always begin at the top after a reload instead of restoring the
+    // previous scroll position or an old in-page navigation hash.
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'manual';
+    }
+    if (window.location.hash) {
+      history.replaceState(null, '', window.location.pathname + window.location.search);
+    }
+    window.scrollTo(0, 0);
+    requestAnimationFrame(() => window.scrollTo(0, 0));
+
     const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (!reduce) {
       this.animateCursor();
