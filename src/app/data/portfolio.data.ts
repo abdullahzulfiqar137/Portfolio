@@ -155,8 +155,8 @@ export const PROJECTS: Project[] = [
     title: 'HospitalSaaS',
     tagline: 'Modern hospital management, simplified',
     description:
-      'A healthcare SaaS platform designed to streamline day-to-day hospital operations through a modern, intuitive and centralized management experience.',
-    tags: ['Healthcare SaaS', 'Hospital Management', 'Dashboard', 'Responsive UI', 'Full Stack'],
+      'A full-stack healthcare SaaS platform with role-based access for Admins, Doctors and Staff. Features include patient registration, appointment scheduling, real-time sync, billing management and an analytics dashboard — built for production use.',
+    tags: ['ASP.NET Core', 'Angular', 'SQL Server', 'Entity Framework', 'REST API', 'TypeScript', 'Role-Based Auth', 'Responsive UI'],
     demo: 'https://github.com/abdullahzulfiqar137/HospitalSaaS',
     github: 'https://github.com/abdullahzulfiqar137/HospitalSaaS',
     gradient: 'linear-gradient(135deg, rgba(16,185,129,.42), rgba(14,165,233,.32))',

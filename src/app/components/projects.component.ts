@@ -178,8 +178,8 @@ import { PROJECTS } from '../data/portfolio.data';
         padding: 7px 11px;
         border-radius: 999px;
         color: #fff;
-        background: rgba(10, 8, 8, 0.82);
-        border: 1px solid rgba(255, 98, 61, 0.35);
+        background: rgba(5, 6, 20, 0.82);
+        border: 1px solid rgba(77, 163, 255, 0.35);
         backdrop-filter: blur(9px);
         font-size: 0.7rem;
         font-weight: 700;
@@ -190,8 +190,8 @@ import { PROJECTS } from '../data/portfolio.data';
         width: 7px;
         height: 7px;
         border-radius: 50%;
-        background: #ff5b3d;
-        box-shadow: 0 0 10px rgba(255, 91, 61, 0.85);
+        background: #4DA3FF;
+        box-shadow: 0 0 10px rgba(77, 163, 255, 0.85);
       }
       .video-open {
         position: absolute;
@@ -211,8 +211,8 @@ import { PROJECTS } from '../data/portfolio.data';
         padding-left: 4px;
         border-radius: 50%;
         color: #fff;
-        background: rgba(10, 8, 8, 0.72);
-        border: 1px solid rgba(255, 98, 61, 0.48);
+        background: rgba(5, 6, 20, 0.72);
+        border: 1px solid rgba(77, 163, 255, 0.48);
         box-shadow: 0 12px 35px rgba(0, 0, 0, 0.45);
         backdrop-filter: blur(10px);
         opacity: 0;
@@ -224,7 +224,7 @@ import { PROJECTS } from '../data/portfolio.data';
         opacity: 1;
         transform: scale(1);
       }
-      .video-open:hover span { background: rgba(231, 61, 34, 0.9); }
+      .video-open:hover span { background: rgba(77, 163, 255, 0.85); }
       .video-modal {
         position: fixed;
         inset: 0;
@@ -242,7 +242,7 @@ import { PROJECTS } from '../data/portfolio.data';
         max-height: 92vh;
         border-radius: 14px;
         overflow: hidden;
-        border: 1px solid rgba(255, 98, 61, 0.3);
+        border: 1px solid rgba(77, 163, 255, 0.3);
         background: #050505;
         box-shadow: 0 30px 100px rgba(0, 0, 0, 0.72);
       }
