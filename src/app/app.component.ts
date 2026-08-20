@@ -44,7 +44,6 @@ import { FooterComponent } from './components/footer.component';
 export class AppComponent implements OnInit, OnDestroy {
   @ViewChild('cursor') cursorRef?: ElementRef<HTMLElement>;
   @ViewChild('toTop') toTopRef?: ElementRef<HTMLElement>;
-  loading = true;
 
   private cursorX = 0;
   private cursorY = 0;
@@ -76,24 +75,13 @@ export class AppComponent implements OnInit, OnDestroy {
       window.addEventListener('mousemove', (e) => this.onMouseMove(e));
       window.addEventListener('mousedown', () => this.toggleCursor(true));
       window.addEventListener('mouseup', () => this.toggleCursor(false));
-      const hover = document.querySelectorAll('a, button, .project-card, input, textarea');
-      hover.forEach((el) =>
-        el.addEventListener('mouseenter', () => this.scaleCursor(true)),
-      );
-      hover.forEach((el) =>
-        el.addEventListener('mouseleave', () => this.scaleCursor(false)),
-      );
+      window.addEventListener('mouseover', (e) => {
+        const target = (e.target as HTMLElement)?.closest('a, button, .project-card, input, textarea');
+        this.scaleCursor(!!target);
+      });
     }
 
     window.addEventListener('scroll', this.scrollHandler, { passive: true });
-
-    const hide = () => (this.loading = false);
-    if (document.readyState === 'complete') {
-      setTimeout(hide, 100);
-    } else {
-      window.addEventListener('load', () => setTimeout(hide, 100));
-    }
-    setTimeout(hide, 1000);
   }
 
   private onMouseMove(e: MouseEvent): void {
@@ -101,12 +89,15 @@ export class AppComponent implements OnInit, OnDestroy {
     this.cursorY = e.clientY;
     this.cursorRef?.nativeElement.classList.add('is-visible');
   }
+
   private toggleCursor(down: boolean): void {
     this.cursorRef?.nativeElement.classList.toggle('is-down', down);
   }
+
   private scaleCursor(big: boolean): void {
     this.cursorRef?.nativeElement.classList.toggle('is-hover', big);
   }
+
   private animateCursor = (): void => {
     const el = this.cursorRef?.nativeElement;
     if (el) {
