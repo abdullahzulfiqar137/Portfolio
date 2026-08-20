@@ -40,7 +40,7 @@ import { PROFILE, SOCIALS } from '../data/portfolio.data';
 
       <div class="container footer-bottom">
         <span>© {{ year }} {{ profile.name }}. All rights reserved.</span>
-        <span>Built with Angular, TypeScript &amp; Bootstrap</span>
+        <span>Built with Angular &amp; TypeScript</span>
       </div>
     </footer>
   `,

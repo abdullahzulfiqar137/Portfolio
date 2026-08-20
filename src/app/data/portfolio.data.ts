@@ -212,9 +212,9 @@ export const SERVICES: ServiceItem[] = [
 
 export const ACHIEVEMENTS: Achievement[] = [
   { value: 1, suffix: '+', label: 'Years Experience', icon: 'M12 8v4l3 3' },
-  { value: 12, suffix: '+', label: 'Projects Completed', icon: 'M4 4h16v16H4z' },
-  { value: 22, suffix: '+', label: 'Technologies Mastered', icon: 'M3 12l9-9 9 9' },
-  { value: 18, suffix: '+', label: 'Happy Clients', icon: 'M12 21s-7-4-7-9a7 7 0 0114 0c0 5-7 9-7 9z' },
+  { value: 2, suffix: '', label: 'Showcased Projects', icon: 'M4 4h16v16H4z' },
+  { value: 22, suffix: '+', label: 'Technologies', icon: 'M3 12l9-9 9 9' },
+  { value: 100, suffix: '%', label: 'Commitment', icon: 'M12 21s-7-4-7-9a7 7 0 0114 0c0 5-7 9-7 9z' },
 ];
 
 export const SOCIALS: SocialLink[] = [

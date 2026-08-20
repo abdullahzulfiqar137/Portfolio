@@ -103,8 +103,8 @@ export class ParticlesComponent implements AfterViewInit, OnDestroy {
       this.ctx.beginPath();
       this.ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
       const grad = this.ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.r * 4);
-      grad.addColorStop(0, `rgba(255,98,61,${p.alpha})`);
-      grad.addColorStop(1, 'rgba(255,66,35,0)');
+      grad.addColorStop(0, `rgba(100,120,255,${p.alpha})`);
+      grad.addColorStop(1, 'rgba(77,163,255,0)');
       this.ctx.fillStyle = grad;
       this.ctx.fill();
 
@@ -117,7 +117,7 @@ export class ParticlesComponent implements AfterViewInit, OnDestroy {
           this.ctx.beginPath();
           this.ctx.moveTo(p.x, p.y);
           this.ctx.lineTo(q.x, q.y);
-          this.ctx.strokeStyle = `rgba(255,91,54,${0.055 * (1 - dist / 100)})`;
+          this.ctx.strokeStyle = `rgba(100,100,255,${0.055 * (1 - dist / 100)})`;
           this.ctx.lineWidth = 1;
           this.ctx.stroke();
         }

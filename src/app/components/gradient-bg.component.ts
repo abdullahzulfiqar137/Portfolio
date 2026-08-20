@@ -14,12 +14,12 @@ import { Component } from '@angular/core';
     </div>
   `,
   styles: [`
-    .ambient { position: fixed; inset: 0; z-index: 0; overflow: hidden; pointer-events: none; background: #090808; }
+    .ambient { position: fixed; inset: 0; z-index: 0; overflow: hidden; pointer-events: none; background: #05060f; }
     .spot { position: absolute; border-radius: 50%; filter: blur(2px); opacity: .7; will-change: transform; }
-    .spot-one { width: 70vw; height: 70vw; top: -42vw; right: -12vw; background: radial-gradient(circle, rgba(151,39,20,.24), rgba(70,22,14,.08) 42%, transparent 68%); animation: breathe 18s ease-in-out infinite; }
-    .spot-two { width: 52vw; height: 52vw; top: 42vh; left: -36vw; background: radial-gradient(circle, rgba(255,74,38,.13), transparent 68%); animation: breathe 23s ease-in-out infinite reverse; }
-    .spot-three { width: 38vw; height: 38vw; right: -20vw; bottom: -10vw; background: radial-gradient(circle, rgba(166,47,23,.12), transparent 70%); }
-    .technical-grid { position: absolute; inset: 0; opacity: .16; background-image: linear-gradient(rgba(255,109,77,.12) 1px, transparent 1px), linear-gradient(90deg, rgba(255,109,77,.12) 1px, transparent 1px); background-size: 80px 80px; mask-image: linear-gradient(to bottom, transparent 4%, #000 24%, #000 72%, transparent 97%); }
+    .spot-one { width: 70vw; height: 70vw; top: -42vw; right: -12vw; background: radial-gradient(circle, rgba(80,40,220,.26), rgba(30,10,140,.08) 42%, transparent 68%); animation: breathe 18s ease-in-out infinite; }
+    .spot-two { width: 52vw; height: 52vw; top: 42vh; left: -36vw; background: radial-gradient(circle, rgba(77,163,255,.14), transparent 68%); animation: breathe 23s ease-in-out infinite reverse; }
+    .spot-three { width: 38vw; height: 38vw; right: -20vw; bottom: -10vw; background: radial-gradient(circle, rgba(123,92,255,.13), transparent 70%); }
+    .technical-grid { position: absolute; inset: 0; opacity: .14; background-image: linear-gradient(rgba(77,163,255,.1) 1px, transparent 1px), linear-gradient(90deg, rgba(77,163,255,.1) 1px, transparent 1px); background-size: 80px 80px; mask-image: linear-gradient(to bottom, transparent 4%, #000 24%, #000 72%, transparent 97%); }
     .vignette { position: absolute; inset: 0; background: radial-gradient(ellipse at center, transparent 22%, rgba(4,3,3,.28) 72%, rgba(3,3,3,.7) 100%); }
     .grain { position: absolute; inset: 0; opacity: .022; mix-blend-mode: soft-light; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.8'/%3E%3C/svg%3E"); }
     @keyframes breathe { 0%,100% { transform: translate3d(0,0,0) scale(1); } 50% { transform: translate3d(-3vw,3vh,0) scale(1.08); } }

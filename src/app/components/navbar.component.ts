@@ -89,7 +89,7 @@ import { PROFILE } from '../data/portfolio.data';
         font-size: 0.85rem;
         background: linear-gradient(135deg, var(--blue), var(--violet));
         color: #fff;
-        box-shadow: 0 8px 24px rgba(255, 75, 45, 0.3);
+        box-shadow: 0 8px 24px rgba(77, 163, 255, 0.3);
       }
       .brand-name {
         font-size: 1.05rem;
@@ -141,7 +141,7 @@ import { PROFILE } from '../data/portfolio.data';
       .nav-cta {
         padding: 10px 22px;
         border-radius: 999px;
-        box-shadow: 0 8px 25px rgba(255, 77, 45, 0.3);
+        box-shadow: 0 8px 25px rgba(100, 80, 255, 0.3);
       }
       .hamburger {
         display: none;
@@ -208,8 +208,8 @@ import { PROFILE } from '../data/portfolio.data';
           overflow-y: auto;
           overscroll-behavior: contain;
           background:
-            radial-gradient(circle at 100% 0, rgba(255, 79, 45, 0.13), transparent 34%),
-            rgba(7, 10, 18, 0.985);
+            radial-gradient(circle at 100% 0, rgba(77, 100, 255, 0.13), transparent 34%),
+            rgba(5, 6, 20, 0.985);
           backdrop-filter: blur(20px);
           -webkit-backdrop-filter: blur(20px);
           border-left: 1px solid var(--stroke);
@@ -219,7 +219,7 @@ import { PROFILE } from '../data/portfolio.data';
         }
         :host-context([data-theme='light']) .nav-links {
           background:
-            radial-gradient(circle at 100% 0, rgba(255, 79, 45, 0.12), transparent 34%),
+            radial-gradient(circle at 100% 0, rgba(77, 100, 255, 0.12), transparent 34%),
             rgba(246, 248, 255, 0.985);
         }
         .nav-links::before {
@@ -259,15 +259,15 @@ import { PROFILE } from '../data/portfolio.data';
         .nav-links a:hover,
         .nav-links a:focus-visible {
           color: var(--text);
-          background: rgba(255, 79, 45, 0.1);
+          background: rgba(77, 100, 255, 0.1);
           transform: translateX(4px);
         }
         .nav-links a:last-child {
           margin-top: 10px;
           justify-content: center;
           color: #fff;
-          background: linear-gradient(135deg, #ff5b3d, #dc341d);
-          box-shadow: 0 10px 28px rgba(255, 79, 45, 0.22);
+          background: linear-gradient(135deg, #5c7cff, #7B5CFF);
+          box-shadow: 0 10px 28px rgba(100, 80, 255, 0.22);
         }
         .nav-links a:last-child::before {
           display: none;
