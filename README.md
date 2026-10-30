@@ -1,28 +1,40 @@
 # Abdullah Zulfiqar | Developer Portfolio
 
-Personal portfolio website built with **Angular 19**.
+<p align="center">
+  <a href="https://abdullahzulfiqar137.github.io/Portfolio/"><strong>🌐 View Live Portfolio</strong></a> ·
+  <a href="https://www.linkedin.com/in/abdullah-zulfiqar-/">LinkedIn</a> ·
+  <a href="mailto:abdullahzulfiqar137@gmail.com">Email</a>
+</p>
 
-🌐 **Live portfolio:** https://abdullahzulfiqar137.github.io/Portfolio/  
-💻 **GitHub:** https://github.com/abdullahzulfiqar137  
-🔗 **LinkedIn:** https://www.linkedin.com/in/abdullah-zulfiqar-/
+<p align="center">
+  <img src="https://img.shields.io/badge/Angular-22-DD0031?logo=angular&logoColor=white" alt="Angular 22" />
+  <img src="https://img.shields.io/badge/TypeScript-6-3178C6?logo=typescript&logoColor=white" alt="TypeScript" />
+  <img src="https://img.shields.io/badge/SCSS-styling-CC6699?logo=sass&logoColor=white" alt="SCSS" />
+  <img src="https://img.shields.io/badge/Hosted_on-GitHub_Pages-222222?logo=githubpages&logoColor=white" alt="GitHub Pages" />
+</p>
 
 ## Overview
 
-This repository contains the source code for my developer portfolio. It is intended to provide a central place to present my software development work, technical interests, and contact links.
+This repository contains the source code for my personal developer portfolio. It provides a central place to explore my background, technical skills, selected software projects, and contact information.
+
+**Live website:** [abdullahzulfiqar137.github.io/Portfolio](https://abdullahzulfiqar137.github.io/Portfolio/)
 
 ## Technology
 
-- Angular 19
+- Angular 22
 - TypeScript
-- HTML
-- SCSS
+- HTML and CSS/SCSS
+- RxJS
+- GitHub Pages
+
+> The Angular version above reflects the dependency versions currently declared in `package.json`.
 
 ## Run locally
 
 ### Prerequisites
 
-- Node.js and npm
-- Angular CLI 19
+- Node.js and npm compatible with the Angular workspace
+- Git
 
 ### Install dependencies
 
@@ -30,37 +42,58 @@ This repository contains the source code for my developer portfolio. It is inten
 npm install
 ```
 
-### Start the development server
+### Start development server
 
 ```bash
-ng serve
+npm start
 ```
 
-Open http://localhost:4200/ in your browser. The development server rebuilds the application when source files change.
+Open [http://localhost:4200](http://localhost:4200).
 
-## Build
+### Production build
 
 ```bash
-ng build
+npm run build
 ```
 
-The production build is generated in the `dist/` directory.
+The generated build output is written to the Angular workspace's configured output directory.
 
-## Tests
+### Run tests
 
 ```bash
-ng test
+npm test
 ```
 
 ## Project structure
 
-The Angular application source is maintained in `src/`. Workspace configuration and npm dependency manifests are located at the repository root.
+```text
+Portfolio/
+├── public/             # Static public assets
+├── src/
+│   ├── app/            # Angular application code
+│   ├── index.html
+│   ├── main.ts
+│   └── styles.css
+├── angular.json        # Angular workspace configuration
+├── package.json        # Scripts and dependencies
+└── tsconfig.json       # TypeScript configuration
+```
+
+## Development workflow
+
+1. Clone the repository.
+2. Install dependencies with `npm install`.
+3. Start the local server with `npm start`.
+4. Make changes under `src/`.
+5. Run the production build and tests before publishing.
 
 ## Connect
 
-- Portfolio: https://abdullahzulfiqar137.github.io/Portfolio/
-- GitHub: https://github.com/abdullahzulfiqar137
-- LinkedIn: https://www.linkedin.com/in/abdullah-zulfiqar-/
+- **Portfolio:** [Live website](https://abdullahzulfiqar137.github.io/Portfolio/)
+- **GitHub:** [@abdullahzulfiqar137](https://github.com/abdullahzulfiqar137)
+- **LinkedIn:** [Abdullah Zulfiqar](https://www.linkedin.com/in/abdullah-zulfiqar-/)
+- **Email:** [abdullahzulfiqar137@gmail.com](mailto:abdullahzulfiqar137@gmail.com)
 
 ---
-*Built and maintained by Abdullah Zulfiqar.*
+
+*Designed and maintained by Abdullah Zulfiqar.*
