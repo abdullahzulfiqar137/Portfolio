@@ -19,6 +19,14 @@ This repository contains the source code for my personal developer portfolio. It
 
 **Live website:** [abdullahzulfiqar137.github.io/Portfolio](https://abdullahzulfiqar137.github.io/Portfolio/)
 
+## Project walkthroughs
+
+The repository includes short recorded walkthroughs for selected projects:
+
+- [BizOps Platform demo video](https://raw.githubusercontent.com/abdullahzulfiqar137/Portfolio/main/public/assets/videos/bizops-platform-demo.mp4)
+- [BizOps Platform preview](https://raw.githubusercontent.com/abdullahzulfiqar137/Portfolio/main/public/assets/videos/bizops-platform-preview.mp4)
+- [Hospital SaaS demo video](https://raw.githubusercontent.com/abdullahzulfiqar137/Portfolio/main/public/assets/videos/hospital-saas-demo.mp4)
+
 ## Technology
 
 - Angular 22
@@ -86,6 +94,10 @@ Portfolio/
 3. Start the local server with `npm start`.
 4. Make changes under `src/`.
 5. Run the production build and tests before publishing.
+
+## Security
+
+See [SECURITY.md](SECURITY.md) for the vulnerability reporting process.
 
 ## Connect
 
