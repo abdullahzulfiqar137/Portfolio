@@ -17,9 +17,25 @@ import { PROFILE } from '../data/portfolio.data';
           @for (item of links; track item.href) {
             <a [href]="item.href" (click)="closeMenu()">{{ item.label }}</a>
           }
+          <a class="mobile-resume-link" [href]="profile.resumeUrl" download="Abdullah_Zulfiqar_Resume.pdf" (click)="closeMenu()">
+            Download CV ↓
+          </a>
         </nav>
 
         <div class="nav-actions">
+          <a
+            class="nav-resume-btn"
+            [href]="profile.resumeUrl"
+            download="Abdullah_Zulfiqar_Resume.pdf"
+            aria-label="Download Résumé"
+            title="Download Résumé (PDF)"
+          >
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2">
+              <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+            <span>CV</span>
+          </a>
+
           <button
             class="theme-toggle"
             type="button"
@@ -28,9 +44,11 @@ import { PROFILE } from '../data/portfolio.data';
           >
             <span class="theme-icon">{{ theme.theme() === 'dark' ? '☾' : '☀' }}</span>
           </button>
+
           <a class="btn btn-premium btn-primary-premium nav-cta" [href]="'#contact'">
             Hire Me
           </a>
+
           <button
             class="hamburger"
             type="button"
@@ -114,10 +132,40 @@ import { PROFILE } from '../data/portfolio.data';
         color: var(--text);
         background: rgba(255, 255, 255, 0.06);
       }
+      .mobile-resume-link {
+        display: none !important;
+      }
       .nav-actions {
         display: flex;
         align-items: center;
         gap: 10px;
+      }
+      .nav-resume-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 8px 14px;
+        border-radius: 999px;
+        border: 1px solid rgba(77, 163, 255, 0.35);
+        background: rgba(77, 163, 255, 0.08);
+        color: #eef2ff;
+        font-size: 0.82rem;
+        font-weight: 700;
+        letter-spacing: 0.02em;
+        text-decoration: none;
+        transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+      }
+      .nav-resume-btn:hover {
+        background: rgba(77, 163, 255, 0.18);
+        border-color: rgba(77, 163, 255, 0.65);
+        transform: translateY(-1px);
+        color: #fff;
+      }
+      .nav-resume-btn svg {
+        color: var(--blue);
+      }
+      :host-context([data-theme='light']) .nav-resume-btn {
+        color: #1a2238;
       }
       .theme-toggle {
         width: 40px;
@@ -262,15 +310,16 @@ import { PROFILE } from '../data/portfolio.data';
           background: rgba(77, 100, 255, 0.1);
           transform: translateX(4px);
         }
-        .nav-links a:last-child {
-          margin-top: 10px;
+        .mobile-resume-link {
+          display: flex !important;
+          margin-top: 14px;
+          color: #fff !important;
+          border: 1px solid rgba(77, 163, 255, 0.4);
+          background: rgba(77, 163, 255, 0.14) !important;
           justify-content: center;
-          color: #fff;
-          background: linear-gradient(135deg, #5c7cff, #7B5CFF);
-          box-shadow: 0 10px 28px rgba(100, 80, 255, 0.22);
         }
-        .nav-links a:last-child::before {
-          display: none;
+        .mobile-resume-link::before {
+          display: none !important;
         }
         .hamburger {
           display: block;

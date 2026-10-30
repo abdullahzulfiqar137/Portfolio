@@ -67,7 +67,9 @@ export const PROFILE = {
     'Results-driven .NET Full Stack Developer with 1+ year of hands-on experience designing and delivering scalable web applications using C#, ASP.NET Core (.NET 8), Angular, TypeScript, Entity Framework Core, and SQL Server. Experienced in architecting secure RESTful APIs, implementing Repository & Clean Architecture patterns, optimizing database queries, and developing responsive Single Page Applications (SPAs). Focused on writing maintainable, clean code, optimizing performance, and building reliable enterprise software.',
   email: 'abdullahzulfiqar137@gmail.com',
   phone: '+92 333 4320471',
+  whatsappUrl: 'https://wa.me/923334320471',
   location: 'Lahore, Pakistan',
+  status: 'Available for Full-Time & Remote Roles',
   linkedin: 'https://www.linkedin.com/in/abdullah-zulfiqar-/',
   github: 'https://github.com/abdullahzulfiqar137',
   resumeUrl: 'assets/resume/Abdullah_Zulfiqar_Resume.pdf',
@@ -287,5 +289,6 @@ export const ACHIEVEMENTS: Achievement[] = [
 export const SOCIALS: SocialLink[] = [
   { label: 'GitHub', href: 'https://github.com/abdullahzulfiqar137', icon: 'github' },
   { label: 'LinkedIn', href: 'https://www.linkedin.com/in/abdullah-zulfiqar-/', icon: 'linkedin' },
+  { label: 'WhatsApp', href: 'https://wa.me/923334320471', icon: 'whatsapp' },
   { label: 'Email', href: 'mailto:abdullahzulfiqar137@gmail.com', icon: 'mail' },
 ];

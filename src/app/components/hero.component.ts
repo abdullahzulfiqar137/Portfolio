@@ -13,7 +13,12 @@ import { RevealDirective } from '../directives/reveal.directive';
 
       <div class="container hero-layout">
         <div class="hero-copy">
-          <p class="reveal hello" [appReveal]="0">Hey! I'm Abdullah <span>✦</span></p>
+          <div class="reveal status-pill" [appReveal]="0">
+            <span class="status-dot"></span>
+            <span>Available for Full-Time &amp; Remote Roles</span>
+          </div>
+
+          <p class="reveal hello" [appReveal]="40">Hey! I'm Abdullah <span>✦</span></p>
           <h1 class="reveal" [appReveal]="80">
             I build digital<br />
             <em>experiences</em><br />
@@ -95,6 +100,34 @@ import { RevealDirective } from '../directives/reveal.directive';
       display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(300px, .8fr) 230px;
       align-items: center; gap: 20px;
     }
+    .status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      padding: 6px 14px;
+      border-radius: 999px;
+      background: rgba(34, 197, 94, 0.12);
+      border: 1px solid rgba(34, 197, 94, 0.4);
+      color: #4ade80;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      margin-bottom: 14px;
+      width: fit-content;
+      box-shadow: 0 4px 18px rgba(34, 197, 94, 0.15);
+    }
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #22c55e;
+      box-shadow: 0 0 10px #22c55e;
+      animation: pulseGreen 2s infinite ease-in-out;
+    }
+    @keyframes pulseGreen {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.8); }
+    }
     .hello { margin: 0 0 10px; color: #4DA3FF; font-weight: 700; font-size: .92rem; }
     .hello span { color: #7B5CFF; }
     h1 { margin: 0; color: #fff; text-transform: uppercase; font-size: clamp(2.8rem, 5.2vw, 5.35rem); line-height: .98; letter-spacing: -.045em; font-weight: 900; }
@@ -125,13 +158,21 @@ import { RevealDirective } from '../directives/reveal.directive';
       .overview { grid-template-columns: 1.6fr repeat(2, 1fr); }.overview-copy { grid-row: span 2; }
     }
     @media (max-width: 720px) {
-      .hero { padding: 105px 0 28px; }.hero-layout { display: flex; flex-direction: column; text-align: center; min-height: auto; }.intro { margin-inline: auto; }
-      .actions { justify-content: center; }.portrait-wrap { height: 420px; order: 2; margin-top: -35px; }.hero-copy { order: 1; z-index: 2; }
-      .hero-orbit { left: 50%; top: 61%; width: 310px; }.overview { margin-top: -45px; grid-template-columns: 1fr 1fr; padding: 22px; }.overview-copy { grid-column: 1 / -1; grid-row: auto; text-align: center; }
+      .hero { padding: 105px 0 28px; }
+      .hero-layout { display: flex; flex-direction: column; text-align: center; min-height: auto; }
+      .status-pill { margin-inline: auto; }
+      .intro { margin-inline: auto; }
+      .actions { justify-content: center; }
+      .portrait-wrap { height: 420px; order: 2; margin-top: -35px; }
+      .hero-copy { order: 1; z-index: 2; }
+      .hero-orbit { left: 50%; top: 61%; width: 310px; }
+      .overview { margin-top: -45px; grid-template-columns: 1fr 1fr; padding: 22px; }
+      .overview-copy { grid-column: 1 / -1; grid-row: auto; text-align: center; }
     }
     @media (max-width: 480px) {
       .hero { padding-top: 92px; }
       h1 { font-size: clamp(2.35rem, 12vw, 3.25rem); }
+      .status-pill { font-size: 0.72rem; padding: 5px 12px; }
       .hello { font-size: .82rem; }
       .intro { font-size: .92rem; line-height: 1.6; }
       .actions { width: 100%; gap: 10px; }
