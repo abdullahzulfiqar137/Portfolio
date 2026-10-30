@@ -18,14 +18,16 @@ import { PROFILE, EDUCATION, LANGUAGES } from '../data/portfolio.data';
           <div class="about-copy reveal glass" [appReveal]="80">
             <p>{{ profile.summary }}</p>
             <p>
-              Currently pursuing a <strong>BS in Information Technology Management</strong>
-              (in progress), I combine strong engineering fundamentals with a product
-              mindset and a passion for problem solving and continuous learning.
+              With hands-on experience building production features at <strong>Awatech Technology Solutions</strong> and academic training in <strong>Information Technology Management</strong>, I combine solid software engineering principles with clean architecture, robust APIs, and maintainable frontend designs.
             </p>
             <div class="about-chips">
-              <span class="badge-tech">Problem Solver</span>
+              <span class="badge-tech">Clean Architecture</span>
+              <span class="badge-tech">ASP.NET Core (.NET 8)</span>
+              <span class="badge-tech">Angular &amp; TypeScript</span>
+              <span class="badge-tech">SQL Server</span>
+              <span class="badge-tech">Repository Pattern</span>
               <span class="badge-tech">Clean Code</span>
-              <span class="badge-tech">Fast Learner</span>
+              <span class="badge-tech">Problem Solver</span>
               <span class="badge-tech">Team Collaboration</span>
             </div>
           </div>
@@ -37,7 +39,12 @@ import { PROFILE, EDUCATION, LANGUAGES } from '../data/portfolio.data';
                 <div class="edu-item">
                   <div class="edu-degree">{{ edu.degree }}</div>
                   <div class="edu-school">{{ edu.school }}</div>
-                  <div class="edu-meta">{{ edu.location }} · {{ edu.period }}</div>
+                  <div class="edu-meta">
+                    {{ edu.location }} · {{ edu.period }}
+                    @if (edu.grade) {
+                      <strong> · {{ edu.grade }}</strong>
+                    }
+                  </div>
                 </div>
               }
             </div>
@@ -97,11 +104,6 @@ import { PROFILE, EDUCATION, LANGUAGES } from '../data/portfolio.data';
         gap: 10px;
         margin-top: 8px;
       }
-      .about-stats {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 18px;
-      }
       .about-side {
         display: flex;
         flex-direction: column;
@@ -136,6 +138,9 @@ import { PROFILE, EDUCATION, LANGUAGES } from '../data/portfolio.data';
         color: var(--muted2);
         font-size: 0.82rem;
         margin-top: 4px;
+      }
+      .edu-meta strong {
+        color: var(--blue);
       }
       .lang-list {
         display: flex;

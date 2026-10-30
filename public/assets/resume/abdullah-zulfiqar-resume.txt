@@ -1,36 +1,56 @@
 ABDULLAH ZULFIQAR
-.NET Full Stack Developer
-Email: abdullahzulfiqar137@gmail.com
-Phone: +92 333 4320471
-LinkedIn: https://www.linkedin.com/in/abdullah-zulfiqar-/
+.NET FULL STACK DEVELOPER
+Lahore, Pakistan • WhatsApp: +92 333 4320471 • abdullahzulfiqar137@gmail.com
+Portfolio: https://abdullahzulfiqar137.github.io/Portfolio/
 GitHub: https://github.com/abdullahzulfiqar137
-Location: Lahore, Pakistan
+LinkedIn: https://www.linkedin.com/in/abdullah-zulfiqar-/
 
 PROFESSIONAL SUMMARY
-.NET Full Stack Developer with 1+ years of experience building scalable, production-grade web applications using ASP.NET Core, Angular and SQL Server. Currently pursuing a BS in Information Technology Management. Passionate about clean architecture, problem solving and reliable software delivery.
+Results-driven .NET Full Stack Developer with 1+ year of hands-on experience designing and delivering scalable web applications using C#, ASP.NET Core (.NET 8), Angular, TypeScript, Entity Framework Core, and SQL Server. Experienced in architecting secure RESTful APIs, implementing Repository & Clean Architecture patterns, optimizing database queries, and developing responsive Single Page Applications (SPAs). Focused on writing maintainable, clean code, optimizing performance, and building reliable enterprise software.
 
 TECHNICAL SKILLS
-Frontend: Angular, TypeScript, JavaScript, HTML5, CSS3, Bootstrap
-Backend: ASP.NET Core, C#, .NET Web API, Entity Framework Core, LINQ, Repository Pattern
-Database: SQL Server, Database Design, Stored Procedures
-Tools: Git, GitHub, Visual Studio, VS Code, SSMS, Postman, Swagger
+- Backend: C#, .NET 8, ASP.NET Core, .NET Web API, Entity Framework Core (Code-First), LINQ, RESTful APIs
+- Frontend: Angular, TypeScript, JavaScript (ES6+), HTML5, CSS3/SCSS, RxJS, Reactive Forms, Responsive Web Design
+- Architecture & Auth: Clean Architecture, Repository Pattern, Dependency Injection (DI), SOLID Principles, JWT, ASP.NET Core Identity
+- Database: Microsoft SQL Server, T-SQL, Stored Procedures, Schema Design, Indexing, Query Optimization
+- Tools & Platforms: Visual Studio 2022, VS Code, SSMS, Git, GitHub, Postman, Swagger/OpenAPI, GitHub Pages
 
-EXPERIENCE
-Full Stack .NET Developer - Awatech Technology Solutions (2024 to Present)
-- Developed Angular applications with modern, responsive UI.
-- Built REST APIs using ASP.NET Core following clean architecture.
-- Implemented Entity Framework Core Code First with migrations.
-- Designed SQL Server databases with optimized schemas.
-- Performed CRUD operations using Repository and Unit of Work patterns.
-- Optimized application performance through caching, indexing and lazy loading.
+PROFESSIONAL EXPERIENCE
+Full Stack .NET Developer — Awatech Technology Solutions (2024 – Present)
+Lahore, Pakistan
+- Architected and implemented high-performance RESTful APIs in ASP.NET Core (.NET 8) utilizing the Repository Pattern and Dependency Injection for scalable business logic.
+- Engineered dynamic, modular frontend features in Angular and TypeScript using RxJS and Reactive Forms for clean state management and input validation.
+- Implemented Entity Framework Core (Code-First) with automated database migrations, ensuring structured data access layers and transactional integrity.
+- Designed and optimized SQL Server database schemas, stored procedures, and indexes to boost query execution speed and resolve latency bottlenecks.
+- Secured endpoints with JWT authentication and role-based authorization; streamlined frontend–backend integration through Swagger and Postman.
 
-PROJECTS
-Student Management System: ASP.NET Core Web API, Angular, SQL Server, JWT Authentication.
-Inventory Management System: Angular, .NET Core, SQL Server.
-BizOps Platform: AI-powered business OS with project management, team collaboration, task management and real-time communication.
+SELECTED PROJECTS
+1. BizOps Platform — Enterprise Business Operations System
+   Stack: Angular • ASP.NET Core • EF Core • SQL Server
+   - Developed backend APIs supporting core business processes, multi-role user authentication, and transaction workflows with robust data validation.
+   - Implemented SQL Server data persistence and transactional integrity using Entity Framework Core with optimized LINQ queries.
+   - Constructed intuitive Angular dashboard interfaces with reusable components, reactive forms, and role-based navigation guards.
+
+2. Developer Portfolio Website — Personal Showcase
+   Stack: Angular • TypeScript • SCSS • GitHub Pages
+   - Built reusable, mobile-first Angular components and responsive layouts to showcase full-stack projects and technical skills.
+   - Achieved 95+ Google Lighthouse scores through asset optimization and route lazy-loading; deployed via GitHub Pages.
+
+3. HospitalSaaS — Healthcare Platform
+   Stack: ASP.NET Core • Angular • SQL Server • Entity Framework • REST API
+   - Full-stack healthcare SaaS platform with role-based access for Admins, Doctors and Staff.
+   - Features patient registration, appointment scheduling, billing management and an analytics dashboard.
 
 EDUCATION
-BS in Information Technology Management (in progress)
+- Bachelor of Science in Information Technology and Management
+  National College of Business Administration and Economics (NCBA&E), Lahore, Pakistan
+  Expected 2027
 
-SOFT SKILLS
-Problem Solving, Clean Code, Fast Learner, Team Collaboration.
+- Associate Degree Program (ADP) in Information Technology Management
+  Riphah International University, Lahore, Pakistan
+  Completed (2022 – 2024)
+
+LANGUAGES
+- English: Professional Working
+- Urdu: Native
+- Punjabi: Native

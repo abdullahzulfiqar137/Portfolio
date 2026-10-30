@@ -20,12 +20,13 @@ import { RevealDirective } from '../directives/reveal.directive';
             that matter.
           </h1>
           <p class="reveal intro" [appReveal]="160">
-            Full Stack .NET Developer crafting fast, scalable and user-focused
-            products with Angular, ASP.NET Core and SQL Server.
+            Results-driven Full Stack .NET Developer with 1+ year of hands-on experience
+            crafting fast, scalable and enterprise-grade web applications with ASP.NET Core (.NET 8),
+            Angular, Entity Framework Core, and SQL Server.
           </p>
           <div class="reveal actions" [appReveal]="240">
             <a class="primary-action" href="#contact">Start a project <span>→</span></a>
-            <a class="secondary-action" [href]="profile.resumeUrl" download>
+            <a class="secondary-action" [href]="profile.resumeUrl" download="Abdullah_Zulfiqar_Resume.pdf">
               Download résumé <span>↓</span>
             </a>
           </div>
@@ -44,9 +45,9 @@ import { RevealDirective } from '../directives/reveal.directive';
         </div>
 
         <div class="reveal expertise" [appReveal]="280" aria-label="Core expertise">
-          <article><span class="icon">&lt;/&gt;</span><strong>Full stack<br />developer</strong></article>
-          <article><span class="icon">⌘</span><strong>Angular<br />specialist</strong></article>
-          <article><span class="icon">✦</span><strong>Problem<br />solver</strong></article>
+          <article><span class="icon">&lt;/&gt;</span><strong>Full Stack<br />.NET &amp; Angular</strong></article>
+          <article><span class="icon">⌘</span><strong>Clean<br />Architecture</strong></article>
+          <article><span class="icon">✦</span><strong>Database<br />Optimization</strong></article>
         </div>
       </div>
 
@@ -58,8 +59,8 @@ import { RevealDirective } from '../directives/reveal.directive';
         </div>
         <div class="stat"><span>▣</span><small>Experience</small><strong>1+ Years</strong></div>
         <div class="stat"><span>⌁</span><small>Featured project</small><strong>BizOps</strong></div>
-        <div class="stat"><span>◉</span><small>Core stack</small><strong>.NET · Angular</strong></div>
-        <div class="stat"><span>⌖</span><small>Based in</small><strong>Lahore</strong></div>
+        <div class="stat"><span>◉</span><small>Core stack</small><strong>.NET 8 · Angular</strong></div>
+        <div class="stat"><span>⌖</span><small>Based in</small><strong>Lahore, PK</strong></div>
       </div>
 
     </section>

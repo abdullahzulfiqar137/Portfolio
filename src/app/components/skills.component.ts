@@ -23,8 +23,8 @@ import { SKILL_CATEGORIES } from '../data/portfolio.data';
           <span class="eyebrow">Skills</span>
           <h2 class="section-title">Technologies I work with</h2>
           <p class="section-subtitle">
-            A practical, full-stack toolkit spanning modern frontend frameworks,
-            robust .NET backends and reliable data layers.
+            Production-proven technologies across .NET 8, Angular, Clean Architecture,
+            SQL Server, and modern developer tooling.
           </p>
         </div>
 
@@ -88,6 +88,14 @@ import { SKILL_CATEGORIES } from '../data/portfolio.data';
         padding: 26px;
         border-radius: var(--radius-xl);
       }
+      .skill-card:last-child:nth-child(odd) {
+        grid-column: 1 / -1;
+      }
+      .skill-card:last-child:nth-child(odd) .skill-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 14px 24px;
+      }
       .skill-card-head {
         display: flex;
         align-items: center;
@@ -127,7 +135,7 @@ import { SKILL_CATEGORIES } from '../data/portfolio.data';
       }
       .skill-badge {
         width: auto;
-        min-width: 30px;
+        min-width: 34px;
         height: 26px;
         flex: 0 0 auto;
         padding-inline: 6px;
@@ -149,6 +157,14 @@ import { SKILL_CATEGORIES } from '../data/portfolio.data';
       @media (max-width: 760px) {
         .skills-grid {
           grid-template-columns: 1fr;
+        }
+        .skill-card:last-child:nth-child(odd) {
+          grid-column: auto;
+        }
+        .skill-card:last-child:nth-child(odd) .skill-list {
+          display: flex;
+          flex-direction: column;
+          gap: 13px;
         }
         .skill-card { padding: 20px 18px; }
         .skill-card-head { margin-bottom: 18px; }

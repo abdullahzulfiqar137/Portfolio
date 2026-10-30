@@ -14,8 +14,8 @@ import { PROJECTS } from '../data/portfolio.data';
           <span class="eyebrow">Featured Projects</span>
           <h2 class="section-title">Things I've built</h2>
           <p class="section-subtitle">
-            Production-style applications showing my full-stack capabilities across
-            the .NET and Angular ecosystem.
+            Production-grade applications showing full-stack capabilities across
+            ASP.NET Core (.NET 8), Angular, EF Core, and SQL Server.
           </p>
         </div>
 
@@ -50,7 +50,11 @@ import { PROJECTS } from '../data/portfolio.data';
                   </button>
                 } @else {
                   <span class="proj-glow"></span>
-                  <span class="proj-title-big">{{ project.title.split(' ')[0] }}</span>
+                  <div class="proj-badge-center">
+                    <span class="proj-title-big">{{ project.title.split(' ')[0] }}</span>
+                    <span class="proj-subtag">Live Showcase</span>
+                  </div>
+                  <span class="video-label"><i></i> Lighthouse 95+</span>
                 }
               </div>
               <div class="proj-body">
@@ -154,10 +158,24 @@ import { PROJECTS } from '../data/portfolio.data';
       }
       .proj-visual {
         position: relative;
-        height: 130px;
+        height: 140px;
         overflow: hidden;
         display: grid;
         place-items: center;
+      }
+      .proj-badge-center {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 4px;
+        z-index: 1;
+      }
+      .proj-subtag {
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.75);
       }
       .proj-video {
         position: absolute;
@@ -275,7 +293,7 @@ import { PROJECTS } from '../data/portfolio.data';
         background: radial-gradient(circle at 30% 20%, rgba(255, 255, 255, 0.25), transparent 55%);
       }
       .proj-title-big {
-        font-size: 2.4rem;
+        font-size: 2.2rem;
         font-weight: 900;
         letter-spacing: -0.03em;
         color: rgba(255, 255, 255, 0.92);
