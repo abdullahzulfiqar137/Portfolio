@@ -18,6 +18,7 @@ export class RevealDirective implements OnInit, OnDestroy {
   @Input('appReveal') delay = 0;
 
   private observer?: IntersectionObserver;
+  private fallbackTimer?: any;
 
   constructor(
     private el: ElementRef<HTMLElement>,
@@ -35,23 +36,55 @@ export class RevealDirective implements OnInit, OnDestroy {
       return;
     }
 
+    // Check if already visible or in view
+    try {
+      const rect = node.getBoundingClientRect();
+      if (rect.top < window.innerHeight + 100) {
+        node.classList.add('is-visible');
+        return;
+      }
+    } catch {
+      node.classList.add('is-visible');
+      return;
+    }
+
     this.zone.runOutsideAngular(() => {
       this.observer = new IntersectionObserver(
         (entries) => {
           for (const entry of entries) {
             if (entry.isIntersecting) {
-              entry.target.classList.add('is-visible');
-              this.observer?.unobserve(entry.target);
+              node.classList.add('is-visible');
+              if (this.observer) {
+                this.observer.disconnect();
+                this.observer = undefined;
+              }
+              if (this.fallbackTimer) {
+                clearTimeout(this.fallbackTimer);
+                this.fallbackTimer = undefined;
+              }
             }
           }
         },
-        { threshold: 0.12, rootMargin: '0px 0px -8% 0px' },
+        { threshold: 0.01, rootMargin: '150px 0px 150px 0px' },
       );
+
       this.observer.observe(node);
+
+      // Fail-safe: ensure content is never permanently hidden if observer is delayed or skipped
+      this.fallbackTimer = setTimeout(() => {
+        node.classList.add('is-visible');
+      }, 1000 + (this.delay || 0));
     });
   }
 
   ngOnDestroy(): void {
-    this.observer?.disconnect();
+    if (this.observer) {
+      this.observer.disconnect();
+      this.observer = undefined;
+    }
+    if (this.fallbackTimer) {
+      clearTimeout(this.fallbackTimer);
+      this.fallbackTimer = undefined;
+    }
   }
 }

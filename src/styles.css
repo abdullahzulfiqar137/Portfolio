@@ -553,18 +553,17 @@ body .exp-card{ border-radius: 12px !important; box-shadow: none !important; pad
 body .exp-list{ display: grid; grid-template-columns: 1fr 1fr; gap: 7px 30px; }
 body .exp-list li::marker{ color: #4DA3FF; }
 
-body .projects-grid{ gap: 16px !important; }
-body .project-card{ border-radius: 12px !important; background: #080a1e !important; border-color: rgba(77,163,255,.16) !important; box-shadow: 0 18px 50px rgba(0,0,0,.25) !important; }
-body .project-card:nth-child(2){ transform: translateY(28px); }
-body .project-card:nth-child(2):hover{ transform: translateY(21px); }
-body .proj-visual{ height: 170px !important; background: radial-gradient(circle at 50% 110%,rgba(77,163,255,.55),transparent 58%),linear-gradient(145deg,#0c0f30,#080a1e) !important; }
+body .projects-grid{ display: grid; grid-template-columns: repeat(3, 1fr) !important; gap: 20px !important; }
+body .project-card{ border-radius: 14px !important; background: linear-gradient(160deg, rgba(15, 23, 42, 0.72), rgba(7, 10, 24, 0.82)) !important; border: 1px solid rgba(255, 255, 255, 0.08) !important; box-shadow: 0 16px 40px rgba(0,0,0,.35) !important; transform: none !important; }
+body .project-card:hover{ border-color: rgba(56, 189, 248, 0.35) !important; transform: translateY(-4px) !important; box-shadow: 0 20px 50px rgba(0,0,0,.45) !important; }
+body .proj-visual{ height: 160px !important; background: radial-gradient(circle at 50% 110%, rgba(56, 189, 248, 0.25), transparent 65%), linear-gradient(145deg, #0c1228, #070a18) !important; border-bottom: 1px solid rgba(255, 255, 255, 0.08); }
 body .proj-title-big{ color: rgba(255,255,255,.9) !important; text-transform: uppercase; font-size: 1.7rem !important; letter-spacing: .08em !important; }
-body .proj-link{ border-radius: 6px; border-color: rgba(77,163,255,.2); }
+body .proj-link{ border-radius: 8px; border-color: rgba(56, 189, 248, .25); font-weight: 600; font-size: 0.85rem; }
 
-body .services-grid{ grid-template-columns: repeat(5,1fr) !important; gap: 12px !important; }
-body .svc-card{ padding: 24px 20px !important; border-radius: 10px !important; box-shadow: none !important; }
-body .svc-card:nth-child(even){ transform: translateY(22px); }
-body .svc-icon{ border-radius: 7px !important; background: rgba(77,163,255,.08) !important; border-color: rgba(123,92,255,.24) !important; color: #7B5CFF !important; }
+body .services-grid{ display: grid; grid-template-columns: repeat(3, 1fr) !important; gap: 18px !important; }
+body .svc-card{ padding: 26px 22px !important; border-radius: 14px !important; background: linear-gradient(160deg, rgba(15, 23, 42, 0.7), rgba(7, 10, 24, 0.8)) !important; border: 1px solid rgba(255, 255, 255, 0.08) !important; box-shadow: 0 14px 35px rgba(0,0,0,.3) !important; transform: none !important; }
+body .svc-card:hover{ border-color: rgba(56, 189, 248, 0.35) !important; transform: translateY(-4px) !important; }
+body .svc-icon{ border-radius: 10px !important; background: rgba(56, 189, 248, .1) !important; border: 1px solid rgba(56, 189, 248, .25) !important; color: #38BDF8 !important; }
 
 body .achievements{ padding-block: 55px; }
 body .ach-grid{ border: 1px solid rgba(77,163,255,.14) !important; border-radius: 16px; padding: 30px !important; background: linear-gradient(110deg,rgba(18,16,55,.65),rgba(10,10,30,.7)); }
