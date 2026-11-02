@@ -4,7 +4,6 @@ import { PROFILE, EDUCATION, LANGUAGES } from '../data/portfolio.data';
 
 interface TimezoneZone {
   id: string;
-  flag: string;
   label: string;
   location: string;
   overlapHours: string;
@@ -56,7 +55,7 @@ interface TimezoneZone {
                 </div>
               </div>
 
-              <!-- Interactive Timezone Selector Tabs -->
+              <!-- Interactive Timezone Selector Tabs with SVG Vector Flags -->
               <div class="tz-tabs" role="tablist" aria-label="Select recruiter timezone">
                 @for (tz of timezones; track tz.id) {
                   <button
@@ -67,7 +66,54 @@ interface TimezoneZone {
                     role="tab"
                     [attr.aria-selected]="selectedTz().id === tz.id"
                   >
-                    <span>{{ tz.flag }}</span>
+                    <span class="flag-wrap">
+                      @switch (tz.id) {
+                        @case ('est') {
+                          <!-- US Flag SVG -->
+                          <svg class="flag-svg" viewBox="0 0 24 16" width="18" height="12" aria-hidden="true">
+                            <rect width="24" height="16" fill="#b22234" rx="2"/>
+                            <path d="M0 2.46h24v2.46H0zm0 4.92h24v2.46H0zm0 4.92h24v2.46H0z" fill="#fff"/>
+                            <rect width="10" height="8.6" fill="#3c3b6e"/>
+                            <circle cx="5" cy="4.3" r="2.2" fill="#fff"/>
+                          </svg>
+                        }
+                        @case ('pst') {
+                          <!-- US Flag SVG -->
+                          <svg class="flag-svg" viewBox="0 0 24 16" width="18" height="12" aria-hidden="true">
+                            <rect width="24" height="16" fill="#b22234" rx="2"/>
+                            <path d="M0 2.46h24v2.46H0zm0 4.92h24v2.46H0zm0 4.92h24v2.46H0z" fill="#fff"/>
+                            <rect width="10" height="8.6" fill="#3c3b6e"/>
+                            <circle cx="5" cy="4.3" r="2.2" fill="#fff"/>
+                          </svg>
+                        }
+                        @case ('gmt') {
+                          <!-- UK Flag SVG -->
+                          <svg class="flag-svg" viewBox="0 0 24 16" width="18" height="12" aria-hidden="true">
+                            <rect width="24" height="16" fill="#012169" rx="2"/>
+                            <path d="M0 0l24 16m0-16L0 16" stroke="#fff" stroke-width="3"/>
+                            <path d="M0 0l24 16m0-16L0 16" stroke="#c8102e" stroke-width="1.8"/>
+                            <path d="M12 0v16M0 8h24" stroke="#fff" stroke-width="5"/>
+                            <path d="M12 0v16M0 8h24" stroke="#c8102e" stroke-width="3"/>
+                          </svg>
+                        }
+                        @case ('cet') {
+                          <!-- Europe EU Flag SVG -->
+                          <svg class="flag-svg" viewBox="0 0 24 16" width="18" height="12" aria-hidden="true">
+                            <rect width="24" height="16" fill="#003399" rx="2"/>
+                            <circle cx="12" cy="8" r="4.6" fill="none" stroke="#ffcc00" stroke-width="1.4" stroke-dasharray="1.5 1.5"/>
+                          </svg>
+                        }
+                        @case ('gst') {
+                          <!-- UAE / Gulf Flag SVG -->
+                          <svg class="flag-svg" viewBox="0 0 24 16" width="18" height="12" aria-hidden="true">
+                            <rect width="24" height="5.33" fill="#00732f" rx="2"/>
+                            <rect y="5.33" width="24" height="5.34" fill="#ffffff"/>
+                            <rect y="10.67" width="24" height="5.33" fill="#000000"/>
+                            <rect width="6" height="16" fill="#ff0000" rx="1"/>
+                          </svg>
+                        }
+                      }
+                    </span>
                     <span>{{ tz.label }}</span>
                   </button>
                 }
@@ -76,9 +122,54 @@ interface TimezoneZone {
               <!-- Selected Zone Overlap Card -->
               <div class="tz-detail-box">
                 <div class="tz-detail-header">
-                  <div>
-                    <strong>{{ selectedTz().location }}</strong>
-                    <div class="tz-badge">{{ selectedTz().overlapHours }}</div>
+                  <div class="tz-title-wrap">
+                    <span class="flag-wrap">
+                      @switch (selectedTz().id) {
+                        @case ('est') {
+                          <svg class="flag-svg" viewBox="0 0 24 16" width="22" height="15" aria-hidden="true">
+                            <rect width="24" height="16" fill="#b22234" rx="2"/>
+                            <path d="M0 2.46h24v2.46H0zm0 4.92h24v2.46H0zm0 4.92h24v2.46H0z" fill="#fff"/>
+                            <rect width="10" height="8.6" fill="#3c3b6e"/>
+                            <circle cx="5" cy="4.3" r="2.2" fill="#fff"/>
+                          </svg>
+                        }
+                        @case ('pst') {
+                          <svg class="flag-svg" viewBox="0 0 24 16" width="22" height="15" aria-hidden="true">
+                            <rect width="24" height="16" fill="#b22234" rx="2"/>
+                            <path d="M0 2.46h24v2.46H0zm0 4.92h24v2.46H0zm0 4.92h24v2.46H0z" fill="#fff"/>
+                            <rect width="10" height="8.6" fill="#3c3b6e"/>
+                            <circle cx="5" cy="4.3" r="2.2" fill="#fff"/>
+                          </svg>
+                        }
+                        @case ('gmt') {
+                          <svg class="flag-svg" viewBox="0 0 24 16" width="22" height="15" aria-hidden="true">
+                            <rect width="24" height="16" fill="#012169" rx="2"/>
+                            <path d="M0 0l24 16m0-16L0 16" stroke="#fff" stroke-width="3"/>
+                            <path d="M0 0l24 16m0-16L0 16" stroke="#c8102e" stroke-width="1.8"/>
+                            <path d="M12 0v16M0 8h24" stroke="#fff" stroke-width="5"/>
+                            <path d="M12 0v16M0 8h24" stroke="#c8102e" stroke-width="3"/>
+                          </svg>
+                        }
+                        @case ('cet') {
+                          <svg class="flag-svg" viewBox="0 0 24 16" width="22" height="15" aria-hidden="true">
+                            <rect width="24" height="16" fill="#003399" rx="2"/>
+                            <circle cx="12" cy="8" r="4.6" fill="none" stroke="#ffcc00" stroke-width="1.4" stroke-dasharray="1.5 1.5"/>
+                          </svg>
+                        }
+                        @case ('gst') {
+                          <svg class="flag-svg" viewBox="0 0 24 16" width="22" height="15" aria-hidden="true">
+                            <rect width="24" height="5.33" fill="#00732f" rx="2"/>
+                            <rect y="5.33" width="24" height="5.34" fill="#ffffff"/>
+                            <rect y="10.67" width="24" height="5.33" fill="#000000"/>
+                            <rect width="6" height="16" fill="#ff0000" rx="1"/>
+                          </svg>
+                        }
+                      }
+                    </span>
+                    <div>
+                      <strong>{{ selectedTz().location }}</strong>
+                      <div class="tz-badge">{{ selectedTz().overlapHours }}</div>
+                    </div>
                   </div>
                 </div>
 
@@ -221,17 +312,17 @@ interface TimezoneZone {
         margin-bottom: 14px;
       }
       .tz-tab {
-        padding: 6px 10px;
+        padding: 6px 11px;
         border-radius: 8px;
         background: rgba(255, 255, 255, 0.04);
         border: 1px solid var(--stroke);
         color: var(--muted);
-        font-size: 0.74rem;
+        font-size: 0.76rem;
         font-weight: 600;
         cursor: pointer;
         display: inline-flex;
         align-items: center;
-        gap: 5px;
+        gap: 7px;
         transition: all 0.2s ease;
       }
       .tz-tab:hover {
@@ -242,6 +333,17 @@ interface TimezoneZone {
         background: rgba(77, 163, 255, 0.18);
         border-color: rgba(77, 163, 255, 0.5);
         color: #93c5fd;
+      }
+      .flag-wrap {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+      }
+      .flag-svg {
+        display: block;
+        border-radius: 2px;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
       }
       .tz-detail-box {
         padding: 14px;
@@ -256,21 +358,26 @@ interface TimezoneZone {
         align-items: flex-start;
         margin-bottom: 10px;
       }
-      .tz-detail-header strong {
-        font-size: 0.84rem;
+      .tz-title-wrap {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .tz-title-wrap strong {
+        font-size: 0.88rem;
         color: var(--text);
         display: block;
       }
       .tz-badge {
         display: inline-block;
-        padding: 3px 8px;
+        padding: 2px 7px;
         border-radius: 6px;
         background: rgba(34, 197, 94, 0.14);
         border: 1px solid rgba(34, 197, 94, 0.35);
         color: #86efac;
         font-size: 0.72rem;
         font-weight: 700;
-        margin-top: 4px;
+        margin-top: 3px;
       }
       .tz-schedule {
         display: flex;
@@ -393,7 +500,6 @@ export class AboutComponent {
   readonly timezones: TimezoneZone[] = [
     {
       id: 'est',
-      flag: '🇺🇸',
       label: 'US East (EST)',
       location: 'New York, Boston (UTC-5)',
       overlapHours: '4–5 Hours Overlap',
@@ -403,7 +509,6 @@ export class AboutComponent {
     },
     {
       id: 'gmt',
-      flag: '🇬🇧',
       label: 'UK (GMT)',
       location: 'London, Manchester (UTC+0)',
       overlapHours: 'Full Workday Overlap (7–8h)',
@@ -413,7 +518,6 @@ export class AboutComponent {
     },
     {
       id: 'cet',
-      flag: '🇪🇺',
       label: 'Europe (CET)',
       location: 'Berlin, Amsterdam (UTC+1)',
       overlapHours: 'Full Workday Overlap (7–8h)',
@@ -423,7 +527,6 @@ export class AboutComponent {
     },
     {
       id: 'pst',
-      flag: '🇺🇸',
       label: 'US West (PST)',
       location: 'San Francisco, Seattle (UTC-8)',
       overlapHours: '2–3 Hours Overlap',
@@ -433,7 +536,6 @@ export class AboutComponent {
     },
     {
       id: 'gst',
-      flag: '🇦🇪',
       label: 'Gulf (GST)',
       location: 'Dubai, Riyadh (UTC+4)',
       overlapHours: 'All-Day Sync (8 Hours)',
