@@ -16,7 +16,7 @@ import { RevealDirective } from '../directives/reveal.directive';
         <div class="hero-copy">
           <div class="reveal status-pill" [appReveal]="0">
             <span class="status-dot"></span>
-            <span>Available for Full-Time &amp; Remote Roles</span>
+            <span>Available Worldwide · US / UK / EU Timezone Overlap</span>
           </div>
 
           <h1 class="reveal hero-title" [appReveal]="40">
@@ -28,7 +28,7 @@ import { RevealDirective } from '../directives/reveal.directive';
           <p class="reveal intro" [appReveal]="80">
             Full Stack .NET Developer with 1+ year of hands-on experience building
             high-throughput RESTful APIs with ASP.NET Core (.NET 8), Entity Framework Core,
-            SQL Server, and reactive Angular interfaces following Clean Architecture.
+            SQL Server, automated testing (xUnit), and reactive Angular interfaces following Clean Architecture.
           </p>
 
           <div class="reveal tech-chips" [appReveal]="120">
@@ -38,6 +38,8 @@ import { RevealDirective } from '../directives/reveal.directive';
             <span class="chip">C#</span>
             <span class="chip">SQL Server</span>
             <span class="chip">Clean Architecture</span>
+            <span class="chip">xUnit / Moq</span>
+            <span class="chip">Docker &amp; CI/CD</span>
           </div>
 
           <div class="reveal actions" [appReveal]="160">

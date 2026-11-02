@@ -62,14 +62,17 @@ export const PROFILE = {
   name: 'Abdullah Zulfiqar',
   title: '.NET Full Stack Developer',
   tagline:
-    'Building Scalable Web Applications with ASP.NET Core (.NET 8), Angular & SQL Server.',
+    'Architecting Scalable Web Applications with ASP.NET Core (.NET 8), Angular & SQL Server.',
   summary:
-    'Results-driven .NET Full Stack Developer with 1+ year of hands-on experience designing and delivering scalable web applications using C#, ASP.NET Core (.NET 8), Angular, TypeScript, Entity Framework Core, and SQL Server. Experienced in architecting secure RESTful APIs, implementing Repository & Clean Architecture patterns, optimizing database queries, and developing responsive Single Page Applications (SPAs). Focused on writing maintainable, clean code, optimizing performance, and building reliable enterprise software.',
+    'Results-driven .NET Full Stack Developer with 1+ year of hands-on experience designing and delivering scalable, enterprise-grade web applications using C#, ASP.NET Core (.NET 8), Angular, TypeScript, Entity Framework Core, and SQL Server. Experienced in architecting secure RESTful APIs, implementing Repository & Clean Architecture patterns, writing automated unit tests (xUnit), optimizing relational databases, and developing responsive Single Page Applications (SPAs). Comfortable collaborating in distributed, asynchronous remote environments with flexible overlap across US (EST), UK (GMT), and European (CET) time zones.',
   email: 'abdullahzulfiqar137@gmail.com',
   phone: '+92 333 4320471',
-  whatsappUrl: 'https://wa.me/923334320471',
+  whatsappUrl:
+    'https://wa.me/923334320471?text=Hi%20Abdullah%2C%20I%20came%20across%20your%20portfolio%20and%20would%20like%20to%20discuss%20an%20opportunity.',
   location: 'Lahore, Pakistan',
-  status: 'Available for Full-Time & Remote Roles',
+  status: 'Available Worldwide · US / UK / EU Timezone Overlap',
+  timezone: 'PKT (UTC+5) · Flexible overlap with US (EST) & Europe (GMT/CET)',
+  remoteReadiness: 'Full-Time Remote · Contract · Distributed Team Ready',
   linkedin: 'https://www.linkedin.com/in/abdullah-zulfiqar-/',
   github: 'https://github.com/abdullahzulfiqar137',
   resumeUrl: 'assets/resume/Abdullah_Zulfiqar_Resume.pdf',
@@ -135,6 +138,17 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
     ],
   },
   {
+    title: 'Testing & Quality Assurance',
+    icon: 'M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z',
+    skills: [
+      { name: 'xUnit & NUnit', level: 88, icon: 'xU' },
+      { name: 'Moq & Unit Testing', level: 88, icon: 'MQ' },
+      { name: 'Integration Testing', level: 86, icon: 'INT' },
+      { name: 'API Automated Testing', level: 90, icon: 'API' },
+      { name: 'Jasmine & Karma', level: 84, icon: 'JK' },
+    ],
+  },
+  {
     title: 'Database Management',
     icon: 'M12 3c4 0 7 1 7 3s-3 3-7 3-7-1-7-3 3-3 7-3zm0 5c4 0 7 1 7 3s-3 3-7 3-7-1-7-3 3-3 7-3zm0 5c4 0 7 1 7 3s-3 3-7 3-7-1-7-3 3-3 7-3z',
     skills: [
@@ -146,16 +160,15 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
     ],
   },
   {
-    title: 'Tools & Platforms',
+    title: 'DevOps, Tools & Platforms',
     icon: 'M14 7l3 3-9 9H5v-3zM19 4a2 2 0 012 2l-2 2-2-2 2-2z',
     skills: [
-      { name: 'Visual Studio 2022', level: 92, icon: 'VS' },
-      { name: 'VS Code', level: 94, icon: 'VSC' },
+      { name: 'Docker & Containers', level: 84, icon: 'DKR' },
+      { name: 'GitHub Actions (CI/CD)', level: 86, icon: 'CI' },
+      { name: 'Git & GitHub (PR Workflows)', level: 92, icon: 'GIT' },
+      { name: 'Postman & Swagger / OpenAPI', level: 92, icon: 'SWG' },
+      { name: 'Visual Studio 2022 & VS Code', level: 94, icon: 'VS' },
       { name: 'SSMS', level: 88, icon: 'SS' },
-      { name: 'Git & GitHub', level: 92, icon: 'GIT' },
-      { name: 'Postman', level: 90, icon: 'PM' },
-      { name: 'Swagger / OpenAPI', level: 90, icon: 'SWG' },
-      { name: 'GitHub Pages', level: 90, icon: 'GHP' },
     ],
   },
 ];
@@ -165,13 +178,14 @@ export const EXPERIENCE: ExperienceItem[] = [
     company: 'Awatech Technology Solutions',
     role: 'Full Stack .NET Developer',
     period: '2024 — Present',
-    location: 'Lahore, Pakistan',
+    location: 'Lahore, Pakistan (Hybrid / Remote)',
     responsibilities: [
-      'Architected and implemented high-performance RESTful APIs in ASP.NET Core (.NET 8) utilizing the Repository Pattern and Dependency Injection for scalable business logic.',
-      'Engineered dynamic, modular frontend features in Angular and TypeScript using RxJS and Reactive Forms for clean state management and input validation.',
-      'Implemented Entity Framework Core (Code-First) with automated database migrations, ensuring structured data access layers and transactional integrity.',
-      'Designed and optimized SQL Server database schemas, stored procedures, and indexes to boost query execution speed and resolve latency bottlenecks.',
-      'Secured endpoints with JWT authentication and role-based authorization; streamlined frontend–backend integration through Swagger and Postman.',
+      'Architected and implemented high-performance RESTful APIs in ASP.NET Core (.NET 8) utilizing Repository and Dependency Injection patterns, powering 20+ core business endpoints and transactional workflows.',
+      'Engineered dynamic, modular frontend features in Angular and TypeScript using RxJS and Reactive Forms for clean asynchronous state management, route guards, and client-side validation.',
+      'Automated database migrations and schema evolution with Entity Framework Core (Code-First), ensuring transactional integrity and zero data loss across deployments.',
+      'Optimized SQL Server database schemas, stored procedures, and composite indexes, cutting critical query execution times by ~35% and resolving latency bottlenecks under peak load.',
+      'Authored automated unit and integration tests with xUnit and Moq to validate business logic and controller endpoints, increasing code reliability for regression-free releases.',
+      'Secured 15+ multi-role API endpoints using JWT authentication and ASP.NET Core Identity with role-based authorization; streamlined team collaboration via Swagger/OpenAPI and Postman collections.',
     ],
   },
 ];
@@ -179,16 +193,17 @@ export const EXPERIENCE: ExperienceItem[] = [
 export const PROJECTS: Project[] = [
   {
     title: 'BizOps Platform',
-    tagline: 'Enterprise Business Operations System',
+    tagline: 'Enterprise Business Operations & ERP System',
     description:
-      'Developed backend APIs supporting core business processes, multi-role user authentication, and transaction workflows with robust data validation. Implemented SQL Server data persistence and transactional integrity using Entity Framework Core with optimized LINQ queries. Constructed intuitive Angular dashboard interfaces with reusable components, reactive forms, and role-based navigation guards.',
+      'Engineered a scalable full-stack enterprise operations platform supporting multi-role authentication, transaction workflows, and data auditing. Built secure ASP.NET Core REST APIs following Clean Architecture and Repository patterns, with Entity Framework Core and SQL Server handling ACID-compliant transactions. Designed modular Angular dashboards with reactive forms, role guards, and real-time state streams. Backed by automated xUnit tests.',
     tags: [
       'Angular',
-      'ASP.NET Core',
+      'ASP.NET Core (.NET 8)',
       'EF Core',
       'SQL Server',
-      'JWT Auth',
       'Clean Architecture',
+      'xUnit & Moq',
+      'JWT Auth',
       'Reactive Forms',
     ],
     demo: 'https://github.com/abdullahzulfiqar137/bizops-platform',
@@ -201,16 +216,16 @@ export const PROJECTS: Project[] = [
   },
   {
     title: 'Developer Portfolio',
-    tagline: 'Personal Showcase & Technical Portfolio',
+    tagline: 'High-Performance Engineering Showcase',
     description:
-      'Built reusable, mobile-first Angular components and responsive layouts to showcase full-stack projects and technical skills. Achieved 95+ Google Lighthouse scores through asset optimization and route lazy-loading; deployed via GitHub Pages.',
+      'Crafted a high-performance, mobile-responsive developer showcase following modern Linear/Vercel design principles. Features standalone Angular components, obsidian glassmorphism, responsive code mockups, and automated CI/CD pipeline deployments via GitHub Actions with a verified 95+ Google Lighthouse score.',
     tags: [
       'Angular',
       'TypeScript',
-      'SCSS',
-      'GitHub Pages',
+      'GitHub Actions (CI/CD)',
       'Responsive Design',
       'Lighthouse 95+',
+      'CSS3 / SCSS',
     ],
     demo: 'https://abdullahzulfiqar137.github.io/Portfolio/',
     github: 'https://github.com/abdullahzulfiqar137/Portfolio',
@@ -220,16 +235,17 @@ export const PROJECTS: Project[] = [
   },
   {
     title: 'HospitalSaaS',
-    tagline: 'Modern healthcare management platform',
+    tagline: 'Multi-Tenant Clinical & Healthcare Platform',
     description:
-      'A full-stack healthcare SaaS platform with role-based access for Admins, Doctors and Staff. Features patient registration, appointment scheduling, real-time sync, billing management and an analytics dashboard built for reliable clinical operations.',
+      'Engineered an enterprise healthcare management SaaS with granular role-based access control for Administrators, Doctors, and Staff. Features patient registration, appointment scheduling, billing workflows, and a clinical analytics dashboard. Designed with ASP.NET Core RESTful APIs, Entity Framework Core, and SQL Server for secure, reliable clinical data management.',
     tags: [
       'ASP.NET Core',
       'Angular',
       'SQL Server',
-      'Entity Framework',
-      'REST API',
-      'Role-Based Auth',
+      'Entity Framework Core',
+      'RESTful API',
+      'Role-Based Security',
+      'JWT Auth',
     ],
     demo: 'https://github.com/abdullahzulfiqar137/HospitalSaaS',
     github: 'https://github.com/abdullahzulfiqar137/HospitalSaaS',
@@ -260,15 +276,15 @@ export const SERVICES: ServiceItem[] = [
     icon: 'M12 3c4 0 7 1 7 3s-3 3-7 3-7-1-7-3 3-3 7-3zm0 5c4 0 7 1 7 3s-3 3-7 3-7-1-7-3 3-3 7-3zm0 5c4 0 7 1 7 3s-3 3-7 3-7-1-7-3 3-3 7-3z',
   },
   {
-    title: 'Frontend SPA Development',
+    title: 'Automated Testing & CI/CD',
     description:
-      'Modular Single Page Applications (SPAs) engineered in Angular and TypeScript using RxJS, Reactive Forms, and modern component architectures.',
-    icon: 'M9 3v6l-4 8h14l-4-8V3',
+      'Robust test suites written in xUnit and Moq ensuring high regression confidence, paired with automated GitHub Actions CI/CD pipelines.',
+    icon: 'M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z',
   },
   {
-    title: 'Authentication & Authorization',
+    title: 'Authentication & Security',
     description:
-      'Robust security implementations using JWT tokens, ASP.NET Core Identity, password hashing, and role-based route navigation guards.',
+      'Enterprise security implementations using JWT tokens, ASP.NET Core Identity, password hashing, and role-based route navigation guards.',
     icon: 'M12 2L3 7v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-9-5z',
   },
   {
@@ -281,14 +297,18 @@ export const SERVICES: ServiceItem[] = [
 
 export const ACHIEVEMENTS: Achievement[] = [
   { value: 1, suffix: '+', label: 'Years Experience', icon: 'M12 8v4l3 3' },
-  { value: 3, suffix: '+', label: 'Featured Projects', icon: 'M4 4h16v16H4z' },
+  { value: 3, suffix: '+', label: 'Enterprise Projects', icon: 'M4 4h16v16H4z' },
   { value: 25, suffix: '+', label: 'Technologies & Tools', icon: 'M3 12l9-9 9 9' },
-  { value: 100, suffix: '%', label: 'Code Quality Commitment', icon: 'M12 21s-7-4-7-9a7 7 0 0114 0c0 5-7 9-7 9z' },
+  { value: 95, suffix: '+', label: 'Google Lighthouse Score', icon: 'M13 10V3L4 14h7v7l9-11h-7z' },
 ];
 
 export const SOCIALS: SocialLink[] = [
   { label: 'GitHub', href: 'https://github.com/abdullahzulfiqar137', icon: 'github' },
   { label: 'LinkedIn', href: 'https://www.linkedin.com/in/abdullah-zulfiqar-/', icon: 'linkedin' },
-  { label: 'WhatsApp', href: 'https://wa.me/923334320471', icon: 'whatsapp' },
-  { label: 'Email', href: 'mailto:abdullahzulfiqar137@gmail.com', icon: 'mail' },
+  {
+    label: 'WhatsApp',
+    href: 'https://wa.me/923334320471?text=Hi%20Abdullah%2C%20I%20came%20across%20your%20portfolio%20and%20would%20like%20to%20discuss%20an%20opportunity.',
+    icon: 'whatsapp',
+  },
+  { label: 'Email', href: 'mailto:abdullahzulfiqar137@gmail.com', icon: 'email' },
 ];

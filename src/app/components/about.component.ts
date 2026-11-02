@@ -27,8 +27,10 @@ import { PROFILE, EDUCATION, LANGUAGES } from '../data/portfolio.data';
               <span class="badge-tech">SQL Server</span>
               <span class="badge-tech">Repository Pattern</span>
               <span class="badge-tech">Clean Code</span>
+              <span class="badge-tech">Unit Testing (xUnit / Moq)</span>
+              <span class="badge-tech">Docker &amp; CI/CD</span>
+              <span class="badge-tech">Async Remote Collaboration</span>
               <span class="badge-tech">Problem Solver</span>
-              <span class="badge-tech">Team Collaboration</span>
             </div>
           </div>
 
@@ -49,7 +51,7 @@ import { PROFILE, EDUCATION, LANGUAGES } from '../data/portfolio.data';
               }
             </div>
 
-            <div class="reveal glass lang-card card-hover" [appReveal]="200">
+            <div class="reveal glass lang-card card-hover" [appReveal]="180">
               <h3 class="side-title">Languages</h3>
               <div class="lang-list">
                 @for (lang of languages; track lang.name) {
@@ -58,6 +60,33 @@ import { PROFILE, EDUCATION, LANGUAGES } from '../data/portfolio.data';
                     <span class="lang-level">{{ lang.level }}</span>
                   </div>
                 }
+              </div>
+            </div>
+
+            <div class="reveal glass remote-card card-hover" [appReveal]="220">
+              <h3 class="side-title">Global Remote Readiness</h3>
+              <div class="remote-list">
+                <div class="remote-item">
+                  <span class="remote-icon">🌍</span>
+                  <div class="remote-text">
+                    <strong>Lahore, Pakistan · PKT (UTC+5)</strong>
+                    <small>Available Worldwide · Distributed Team Ready</small>
+                  </div>
+                </div>
+                <div class="remote-item">
+                  <span class="remote-icon">⚡</span>
+                  <div class="remote-text">
+                    <strong>Timezone Overlap</strong>
+                    <small>4–5h US (EST) · Full overlap UK (GMT) &amp; Europe (CET)</small>
+                  </div>
+                </div>
+                <div class="remote-item">
+                  <span class="remote-icon">🤝</span>
+                  <div class="remote-text">
+                    <strong>Remote Workflow</strong>
+                    <small>Async-first, Git PR code reviews, Postman &amp; documentation</small>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -110,9 +139,42 @@ import { PROFILE, EDUCATION, LANGUAGES } from '../data/portfolio.data';
         gap: 18px;
       }
       .edu-card,
-      .lang-card {
+      .lang-card,
+      .remote-card {
         padding: 24px;
         border-radius: var(--radius-xl);
+      }
+      .remote-list {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+      .remote-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+        padding: 10px 14px;
+        border-radius: 12px;
+        border: 1px solid var(--stroke);
+        background: rgba(255, 255, 255, 0.04);
+      }
+      .remote-icon {
+        font-size: 1.15rem;
+        line-height: 1.2;
+      }
+      .remote-text {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+      }
+      .remote-text strong {
+        font-size: 0.86rem;
+        color: var(--text);
+      }
+      .remote-text small {
+        font-size: 0.78rem;
+        color: var(--muted2);
+        line-height: 1.4;
       }
       .side-title {
         margin: 0 0 16px;
