@@ -113,7 +113,7 @@ import { PROFILE } from '../data/portfolio.data';
             @if (sent()) {
               <div class="form-note success-box" role="status">
                 <strong>✓ Message sent successfully!</strong>
-                <p>Thank you for reaching out. I will review your message and reply promptly.</p>
+                <p>Thank you for reaching out. I have received your message and will reply promptly.</p>
               </div>
             }
 
@@ -437,6 +437,9 @@ export class ContactComponent {
   readonly fallbackMailtoUrl = signal('');
   readonly fallbackWhatsAppUrl = signal('');
 
+  // FormSubmit verified endpoint token generated for abdullahzulfiqar137@gmail.com
+  private readonly endpointToken = '464f84267efdc42f20a4c6d99195abab';
+
   model = { name: '', email: '', message: '' };
 
   async copyEmail(): Promise<void> {
@@ -482,9 +485,9 @@ export class ContactComponent {
     this.fallbackMailtoUrl.set(mailto);
     this.fallbackWhatsAppUrl.set(waUrl);
 
-    // Fast 2.5s attempt to background service
+    // 8s timeout allows external email delivery without prematurely aborting
     const controller = new AbortController();
-    const timeoutId = setTimeout(() => controller.abort(), 2500);
+    const timeoutId = setTimeout(() => controller.abort(), 8000);
 
     try {
       const formData = new FormData();
@@ -494,7 +497,7 @@ export class ContactComponent {
       formData.append('_subject', subject);
       formData.append('_captcha', 'false');
 
-      const response = await fetch(`https://formsubmit.co/ajax/${PROFILE.email}`, {
+      const response = await fetch(`https://formsubmit.co/ajax/${this.endpointToken}`, {
         method: 'POST',
         headers: { Accept: 'application/json' },
         body: formData,
