@@ -1,5 +1,7 @@
 # Abdullah Zulfiqar | Developer Portfolio
 
+[![Portfolio Deployment](https://github.com/abdullahzulfiqar137/Portfolio/actions/workflows/deploy.yml/badge.svg)](https://github.com/abdullahzulfiqar137/Portfolio/actions/workflows/deploy.yml)
+
 <p align="center">
   <a href="https://abdullahzulfiqar137.github.io/Portfolio/"><strong>🌐 View Live Portfolio</strong></a> ·
   <a href="https://www.linkedin.com/in/abdullah-zulfiqar-/">LinkedIn</a> ·
