@@ -94,13 +94,14 @@ import { PROFILE } from '../data/portfolio.data';
 
           <!-- Direct FormSubmit Native Form -->
           <form
+            #formEl
             class="reveal glass contact-form"
             [appReveal]="160"
             action="https://formsubmit.co/464f84267efdc42f20a4c6d99195abab"
             method="POST"
             target="formsubmit_frame"
             #form="ngForm"
-            (ngSubmit)="submit(form)"
+            (ngSubmit)="submit(form, formEl)"
           >
             <!-- FormSubmit Automated Parameters -->
             <input type="hidden" name="_captcha" value="false" />
@@ -368,7 +369,7 @@ export class ContactComponent {
     }
   }
 
-  submit(form: NgForm): void {
+  submit(form: NgForm, formEl: HTMLFormElement): void {
     if (form.invalid) {
       form.control.markAllAsTouched();
       return;
@@ -378,8 +379,10 @@ export class ContactComponent {
     this.sending.set(true);
     this.sent.set(false);
 
-    // FormSubmit native POST runs in the hidden background iframe automatically.
-    // After ~2 seconds, complete smoothly and reset form:
+    // FormSubmit native browser submission into the background hidden iframe
+    HTMLFormElement.prototype.submit.call(formEl);
+
+    // Smooth reset and success feedback after submission
     setTimeout(() => {
       if (this.hasSubmitted) {
         this.sending.set(false);
@@ -388,7 +391,7 @@ export class ContactComponent {
         this.model = { name: '', email: '', message: '' };
         form.resetForm(this.model);
       }
-    }, 2000);
+    }, 2200);
   }
 
   onIframeLoaded(): void {
