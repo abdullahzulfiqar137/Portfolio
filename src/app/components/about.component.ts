@@ -1,6 +1,17 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { RevealDirective } from '../directives/reveal.directive';
 import { PROFILE, EDUCATION, LANGUAGES } from '../data/portfolio.data';
+
+interface TimezoneZone {
+  id: string;
+  flag: string;
+  label: string;
+  location: string;
+  overlapHours: string;
+  localWindow: string;
+  pktWindow: string;
+  summary: string;
+}
 
 @Component({
   selector: 'app-about',
@@ -35,7 +46,71 @@ import { PROFILE, EDUCATION, LANGUAGES } from '../data/portfolio.data';
           </div>
 
           <div class="about-side">
-            <div class="reveal glass edu-card" [appReveal]="120">
+            <!-- Global Remote & Timezone Overlap Widget -->
+            <div class="reveal glass remote-card card-hover" [appReveal]="120">
+              <div class="remote-head">
+                <span class="tz-live-dot"></span>
+                <div>
+                  <h3 class="side-title" style="margin: 0;">Global Remote Readiness</h3>
+                  <small class="tz-sub">Lahore, PK · PKT (UTC+5) · Full-Time / Contract Ready</small>
+                </div>
+              </div>
+
+              <!-- Interactive Timezone Selector Tabs -->
+              <div class="tz-tabs" role="tablist" aria-label="Select recruiter timezone">
+                @for (tz of timezones; track tz.id) {
+                  <button
+                    class="tz-tab"
+                    [class.active]="selectedTz().id === tz.id"
+                    (click)="selectTz(tz)"
+                    type="button"
+                    role="tab"
+                    [attr.aria-selected]="selectedTz().id === tz.id"
+                  >
+                    <span>{{ tz.flag }}</span>
+                    <span>{{ tz.label }}</span>
+                  </button>
+                }
+              </div>
+
+              <!-- Selected Zone Overlap Card -->
+              <div class="tz-detail-box">
+                <div class="tz-detail-header">
+                  <div>
+                    <strong>{{ selectedTz().location }}</strong>
+                    <div class="tz-badge">{{ selectedTz().overlapHours }}</div>
+                  </div>
+                </div>
+
+                <div class="tz-schedule">
+                  <div class="tz-sched-col">
+                    <span class="tz-sched-label">Your Local Time</span>
+                    <strong class="tz-sched-val">{{ selectedTz().localWindow }}</strong>
+                  </div>
+                  <div class="tz-sched-arrow">⇄</div>
+                  <div class="tz-sched-col">
+                    <span class="tz-sched-label">Abdullah's Time (PKT)</span>
+                    <strong class="tz-sched-val">{{ selectedTz().pktWindow }}</strong>
+                  </div>
+                </div>
+
+                <p class="tz-summary">{{ selectedTz().summary }}</p>
+              </div>
+
+              <div class="remote-meta-list">
+                <div class="meta-row">
+                  <span class="meta-icon">✓</span>
+                  <span><strong>Async-First:</strong> Clear PR reviews, Loom walkthroughs, and Swagger contracts.</span>
+                </div>
+                <div class="meta-row">
+                  <span class="meta-icon">✓</span>
+                  <span><strong>Communication:</strong> Fluent professional English for daily standups &amp; sprint planning.</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Education -->
+            <div class="reveal glass edu-card" [appReveal]="160">
               <h3 class="side-title">Education</h3>
               @for (edu of education; track edu.degree) {
                 <div class="edu-item">
@@ -51,7 +126,8 @@ import { PROFILE, EDUCATION, LANGUAGES } from '../data/portfolio.data';
               }
             </div>
 
-            <div class="reveal glass lang-card card-hover" [appReveal]="180">
+            <!-- Languages -->
+            <div class="reveal glass lang-card card-hover" [appReveal]="200">
               <h3 class="side-title">Languages</h3>
               <div class="lang-list">
                 @for (lang of languages; track lang.name) {
@@ -60,33 +136,6 @@ import { PROFILE, EDUCATION, LANGUAGES } from '../data/portfolio.data';
                     <span class="lang-level">{{ lang.level }}</span>
                   </div>
                 }
-              </div>
-            </div>
-
-            <div class="reveal glass remote-card card-hover" [appReveal]="220">
-              <h3 class="side-title">Global Remote Readiness</h3>
-              <div class="remote-list">
-                <div class="remote-item">
-                  <span class="remote-icon">🌍</span>
-                  <div class="remote-text">
-                    <strong>Lahore, Pakistan · PKT (UTC+5)</strong>
-                    <small>Available Worldwide · Distributed Team Ready</small>
-                  </div>
-                </div>
-                <div class="remote-item">
-                  <span class="remote-icon">⚡</span>
-                  <div class="remote-text">
-                    <strong>Timezone Overlap</strong>
-                    <small>4–5h US (EST) · Full overlap UK (GMT) &amp; Europe (CET)</small>
-                  </div>
-                </div>
-                <div class="remote-item">
-                  <span class="remote-icon">🤝</span>
-                  <div class="remote-text">
-                    <strong>Remote Workflow</strong>
-                    <small>Async-first, Git PR code reviews, Postman &amp; documentation</small>
-                  </div>
-                </div>
               </div>
             </div>
           </div>
@@ -98,6 +147,7 @@ import { PROFILE, EDUCATION, LANGUAGES } from '../data/portfolio.data';
     `
       .about-head {
         margin-bottom: 36px;
+        max-width: 620px;
       }
       .eyebrow {
         display: inline-block;
@@ -110,71 +160,173 @@ import { PROFILE, EDUCATION, LANGUAGES } from '../data/portfolio.data';
       }
       .about-grid {
         display: grid;
-        grid-template-columns: 1.2fr 0.8fr;
-        gap: 28px;
-        align-items: stretch;
+        grid-template-columns: 1.15fr 0.85fr;
+        gap: 22px;
+        align-items: start;
       }
       .about-copy {
         padding: 30px;
-        border-radius: var(--radius-xl);
-      }
-      .about-copy p {
+        border-radius: var(--radius-2xl);
+        font-size: 1rem;
+        line-height: 1.8;
         color: var(--muted);
-        line-height: 1.75;
-        margin: 0 0 16px;
+      }
+      .about-copy p + p {
+        margin-top: 16px;
       }
       .about-copy strong {
         color: var(--text);
-        font-weight: 700;
       }
       .about-chips {
         display: flex;
         flex-wrap: wrap;
-        gap: 10px;
-        margin-top: 8px;
+        gap: 8px;
+        margin-top: 24px;
       }
       .about-side {
         display: flex;
         flex-direction: column;
-        gap: 18px;
+        gap: 16px;
       }
       .edu-card,
       .lang-card,
       .remote-card {
-        padding: 24px;
-        border-radius: var(--radius-xl);
+        padding: 22px;
+        border-radius: var(--radius-2xl);
       }
-      .remote-list {
+      .remote-head {
         display: flex;
-        flex-direction: column;
-        gap: 12px;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 14px;
       }
-      .remote-item {
+      .tz-live-dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: #22c55e;
+        box-shadow: 0 0 10px #22c55e;
+        flex-shrink: 0;
+      }
+      .tz-sub {
+        display: block;
+        font-size: 0.76rem;
+        color: var(--muted2);
+        margin-top: 2px;
+      }
+      .tz-tabs {
         display: flex;
-        align-items: flex-start;
-        gap: 12px;
-        padding: 10px 14px;
-        border-radius: 12px;
-        border: 1px solid var(--stroke);
+        flex-wrap: wrap;
+        gap: 6px;
+        margin-bottom: 14px;
+      }
+      .tz-tab {
+        padding: 6px 10px;
+        border-radius: 8px;
         background: rgba(255, 255, 255, 0.04);
+        border: 1px solid var(--stroke);
+        color: var(--muted);
+        font-size: 0.74rem;
+        font-weight: 600;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        transition: all 0.2s ease;
       }
-      .remote-icon {
-        font-size: 1.15rem;
-        line-height: 1.2;
+      .tz-tab:hover {
+        color: var(--text);
+        background: rgba(255, 255, 255, 0.08);
       }
-      .remote-text {
+      .tz-tab.active {
+        background: rgba(77, 163, 255, 0.18);
+        border-color: rgba(77, 163, 255, 0.5);
+        color: #93c5fd;
+      }
+      .tz-detail-box {
+        padding: 14px;
+        border-radius: 12px;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid var(--stroke);
+        margin-bottom: 12px;
+      }
+      .tz-detail-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 10px;
+      }
+      .tz-detail-header strong {
+        font-size: 0.84rem;
+        color: var(--text);
+        display: block;
+      }
+      .tz-badge {
+        display: inline-block;
+        padding: 3px 8px;
+        border-radius: 6px;
+        background: rgba(34, 197, 94, 0.14);
+        border: 1px solid rgba(34, 197, 94, 0.35);
+        color: #86efac;
+        font-size: 0.72rem;
+        font-weight: 700;
+        margin-top: 4px;
+      }
+      .tz-schedule {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 8px;
+        padding: 8px 10px;
+        border-radius: 8px;
+        background: rgba(0, 0, 0, 0.2);
+        margin-bottom: 8px;
+      }
+      .tz-sched-col {
         display: flex;
         flex-direction: column;
         gap: 2px;
       }
-      .remote-text strong {
-        font-size: 0.86rem;
+      .tz-sched-label {
+        font-size: 0.68rem;
+        color: var(--muted2);
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+      }
+      .tz-sched-val {
+        font-size: 0.8rem;
         color: var(--text);
       }
-      .remote-text small {
+      .tz-sched-arrow {
+        color: var(--blue);
+        font-size: 0.9rem;
+      }
+      .tz-summary {
+        margin: 0;
+        font-size: 0.77rem;
+        color: var(--muted);
+        line-height: 1.45;
+      }
+      .remote-meta-list {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
         font-size: 0.78rem;
-        color: var(--muted2);
+        color: var(--muted);
+      }
+      .meta-row {
+        display: flex;
+        align-items: flex-start;
+        gap: 8px;
         line-height: 1.4;
+      }
+      .meta-icon {
+        color: #22c55e;
+        font-weight: 700;
+        flex-shrink: 0;
+      }
+      .meta-row strong {
+        color: var(--text);
       }
       .side-title {
         margin: 0 0 16px;
@@ -237,4 +389,63 @@ export class AboutComponent {
   readonly profile = PROFILE;
   readonly education = EDUCATION;
   readonly languages = LANGUAGES;
+
+  readonly timezones: TimezoneZone[] = [
+    {
+      id: 'est',
+      flag: '🇺🇸',
+      label: 'US East (EST)',
+      location: 'New York, Boston (UTC-5)',
+      overlapHours: '4–5 Hours Overlap',
+      localWindow: '9:00 AM – 1:30 PM EST',
+      pktWindow: '6:00 PM – 10:30 PM PKT',
+      summary: 'Direct synchronous coverage for morning standups, sprint check-ins, and pair reviews.',
+    },
+    {
+      id: 'gmt',
+      flag: '🇬🇧',
+      label: 'UK (GMT)',
+      location: 'London, Manchester (UTC+0)',
+      overlapHours: 'Full Workday Overlap (7–8h)',
+      localWindow: '9:00 AM – 5:00 PM GMT',
+      pktWindow: '2:00 PM – 10:00 PM PKT',
+      summary: 'Complete real-time collaboration across the entire European & British business day.',
+    },
+    {
+      id: 'cet',
+      flag: '🇪🇺',
+      label: 'Europe (CET)',
+      location: 'Berlin, Amsterdam (UTC+1)',
+      overlapHours: 'Full Workday Overlap (7–8h)',
+      localWindow: '9:00 AM – 5:00 PM CET',
+      pktWindow: '1:00 PM – 9:00 PM PKT',
+      summary: 'Full workday sync with continental European teams, code reviews, and sprint check-ins.',
+    },
+    {
+      id: 'pst',
+      flag: '🇺🇸',
+      label: 'US West (PST)',
+      location: 'San Francisco, Seattle (UTC-8)',
+      overlapHours: '2–3 Hours Overlap',
+      localWindow: '8:00 AM – 11:00 AM PST',
+      pktWindow: '8:00 PM – 11:00 PM PKT',
+      summary: 'Evening overlap for morning Pacific standups with reliable asynchronous handoffs.',
+    },
+    {
+      id: 'gst',
+      flag: '🇦🇪',
+      label: 'Gulf (GST)',
+      location: 'Dubai, Riyadh (UTC+4)',
+      overlapHours: 'All-Day Sync (8 Hours)',
+      localWindow: '9:00 AM – 6:00 PM GST',
+      pktWindow: '10:00 AM – 7:00 PM PKT',
+      summary: 'Near-identical timezone (1h difference) with direct, real-time availability all day.',
+    },
+  ];
+
+  readonly selectedTz = signal<TimezoneZone>(this.timezones[0]);
+
+  selectTz(tz: TimezoneZone): void {
+    this.selectedTz.set(tz);
+  }
 }

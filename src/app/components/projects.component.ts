@@ -93,6 +93,163 @@ import { PROJECTS } from '../data/portfolio.data';
             </article>
           }
         </div>
+
+        <!-- Enterprise System Architecture & Engineering Standards Showcase -->
+        <div class="reveal arch-showcase glass" [appReveal]="120">
+          <div class="arch-head">
+            <div>
+              <span class="eyebrow" style="margin-bottom: 6px;">System Architecture &amp; Quality</span>
+              <h3 class="arch-title">Enterprise .NET 8 &amp; Angular Engineering Standards</h3>
+              <p class="arch-subtitle">
+                How I structure maintainable, production-grade applications following Clean Architecture, strict typing, automated testing, and CI/CD pipelines.
+              </p>
+            </div>
+          </div>
+
+          <div class="arch-tabs" role="tablist" aria-label="Architecture topic tabs">
+            <button
+              class="arch-tab"
+              [class.active]="selectedArchTab() === 'clean-arch'"
+              (click)="selectedArchTab.set('clean-arch')"
+              type="button"
+              role="tab"
+              [attr.aria-selected]="selectedArchTab() === 'clean-arch'"
+            >
+              🏛️ Clean Architecture
+            </button>
+            <button
+              class="arch-tab"
+              [class.active]="selectedArchTab() === 'security'"
+              (click)="selectedArchTab.set('security')"
+              type="button"
+              role="tab"
+              [attr.aria-selected]="selectedArchTab() === 'security'"
+            >
+              🔒 Security &amp; JWT
+            </button>
+            <button
+              class="arch-tab"
+              [class.active]="selectedArchTab() === 'database'"
+              (click)="selectedArchTab.set('database')"
+              type="button"
+              role="tab"
+              [attr.aria-selected]="selectedArchTab() === 'database'"
+            >
+              ⚡ EF Core &amp; SQL Server
+            </button>
+            <button
+              class="arch-tab"
+              [class.active]="selectedArchTab() === 'testing-cicd'"
+              (click)="selectedArchTab.set('testing-cicd')"
+              type="button"
+              role="tab"
+              [attr.aria-selected]="selectedArchTab() === 'testing-cicd'"
+            >
+              🧪 xUnit &amp; CI/CD
+            </button>
+          </div>
+
+          <div class="arch-content">
+            @if (selectedArchTab() === 'clean-arch') {
+              <div class="arch-panel">
+                <div class="arch-layers">
+                  <div class="arch-layer-item">
+                    <span class="layer-badge">Presentation</span>
+                    <strong>Angular 17+ (SPA)</strong>
+                    <small>Standalone Components · Reactive Forms · Route Guards · RxJS State Management</small>
+                  </div>
+                  <div class="layer-arrow">▼ RESTful API (JSON / HTTPS)</div>
+                  <div class="arch-layer-item">
+                    <span class="layer-badge">API Layer</span>
+                    <strong>ASP.NET Core (.NET 8) Web API</strong>
+                    <small>Dependency Injection · Rate Limiting · Global Exception Handling · Swagger / OpenAPI</small>
+                  </div>
+                  <div class="layer-arrow">▼ Service Contracts &amp; DTOs</div>
+                  <div class="arch-layer-item">
+                    <span class="layer-badge">Application Layer</span>
+                    <strong>Business Logic &amp; Orchestration</strong>
+                    <small>Services &amp; CQRS · FluentValidation · Business DTOs · Error Handling Policies</small>
+                  </div>
+                  <div class="layer-arrow">▼ Core Domain Aggregates</div>
+                  <div class="arch-layer-item">
+                    <span class="layer-badge">Domain Core</span>
+                    <strong>Enterprise Entities &amp; Business Rules</strong>
+                    <small>Pure C# Entities · Aggregate Roots · Value Objects (Zero External Third-Party Dependencies)</small>
+                  </div>
+                  <div class="layer-arrow">▼ Repository / Unit of Work Pattern</div>
+                  <div class="arch-layer-item">
+                    <span class="layer-badge">Infrastructure &amp; Persistence</span>
+                    <strong>EF Core 8 &amp; SQL Server</strong>
+                    <small>Code-First Migrations · ACID Transactions · Non-Clustered Composite Indexes · JWT Security</small>
+                  </div>
+                </div>
+              </div>
+            }
+
+            @if (selectedArchTab() === 'security') {
+              <div class="arch-panel arch-grid-2">
+                <div class="arch-box">
+                  <h4>Authentication &amp; Identity</h4>
+                  <ul>
+                    <li><strong>ASP.NET Core Identity:</strong> Secure password hashing (PBKDF2) and email confirmation workflows.</li>
+                    <li><strong>JWT Token Lifecycle:</strong> Stateless access tokens with cryptographic signatures and refresh token rotation.</li>
+                    <li><strong>Angular HTTP Interceptor:</strong> Automatic bearer token attachment and 401 Unauthorized handling.</li>
+                  </ul>
+                </div>
+                <div class="arch-box">
+                  <h4>Authorization &amp; Protection</h4>
+                  <ul>
+                    <li><strong>Role-Based Access Control (RBAC):</strong> Granular permissions per endpoint using <code>[Authorize(Roles = "...")]</code>.</li>
+                    <li><strong>Angular Route Guards:</strong> <code>CanActivate</code> guards prevent unauthorized client navigation.</li>
+                    <li><strong>API Hardening:</strong> Strict CORS policies, anti-forgery protection, and standardized <code>ProblemDetails</code> error responses.</li>
+                  </ul>
+                </div>
+              </div>
+            }
+
+            @if (selectedArchTab() === 'database') {
+              <div class="arch-panel arch-grid-2">
+                <div class="arch-box">
+                  <h4>EF Core Optimization</h4>
+                  <ul>
+                    <li><strong>Read Efficiency:</strong> <code>AsNoTracking()</code> on read-heavy queries to eliminate EF change tracker overhead.</li>
+                    <li><strong>Eager vs. Explicit Loading:</strong> Intentional <code>Include()</code> usage to eliminate N+1 query problems.</li>
+                    <li><strong>Code-First Migrations:</strong> Strictly version-controlled database schema evolution with automated rollbacks.</li>
+                  </ul>
+                </div>
+                <div class="arch-box">
+                  <h4>SQL Server Performance</h4>
+                  <ul>
+                    <li><strong>Indexing Strategy:</strong> Non-clustered and composite indexes on foreign keys and frequently filtered columns.</li>
+                    <li><strong>T-SQL Stored Procedures:</strong> Precompiled execution plans for critical batch transaction queries.</li>
+                    <li><strong>Connection Resilience:</strong> Execution strategies with automatic retry on transient cloud database failures.</li>
+                  </ul>
+                </div>
+              </div>
+            }
+
+            @if (selectedArchTab() === 'testing-cicd') {
+              <div class="arch-panel arch-grid-2">
+                <div class="arch-box">
+                  <h4>Automated Testing Suite</h4>
+                  <ul>
+                    <li><strong>xUnit &amp; Moq:</strong> Unit testing controller endpoints, service classes, and domain validators in isolation.</li>
+                    <li><strong>Repository Mocking:</strong> Decoupled unit tests running in milliseconds without spinning up SQL Server.</li>
+                    <li><strong>Jasmine &amp; Karma:</strong> Component and service spec testing for Angular reactive forms and state.</li>
+                  </ul>
+                </div>
+                <div class="arch-box">
+                  <h4>DevOps &amp; CI/CD Pipelines</h4>
+                  <ul>
+                    <li><strong>GitHub Actions:</strong> Automated build, linting, and test runs triggered on every pull request.</li>
+                    <li><strong>Containerization:</strong> Multi-stage Dockerfiles packaging ASP.NET Core APIs and Angular Nginx builds.</li>
+                    <li><strong>Zero-Downtime Releases:</strong> Automated staging and production deployments on verified main branch commits.</li>
+                  </ul>
+                </div>
+              </div>
+            }
+          </div>
+        </div>
       </div>
     </section>
 
@@ -138,44 +295,26 @@ import { PROJECTS } from '../data/portfolio.data';
       .project-card:only-child .proj-visual {
         height: 210px;
       }
-      .project-card:after {
-        content: '';
-        position: absolute;
-        inset: 0;
-        border-radius: inherit;
-        background: radial-gradient(
-          400px circle at var(--glare-x, 50%) var(--glare-y, 50%),
-          rgba(255, 255, 255, 0.18),
-          transparent 40%
-        );
-        opacity: 0;
-        transition: opacity 0.3s ease;
-        pointer-events: none;
-        z-index: 3;
+      .project-card:only-child .proj-badge-center {
+        gap: 8px;
       }
-      .project-card:hover:after {
-        opacity: 1;
+      .project-card:only-child .proj-title-big {
+        font-size: clamp(2rem, 4vw, 3rem);
+      }
+      .project-card:only-child .proj-body {
+        padding: 26px 28px 24px;
+      }
+      .project-card:only-child .proj-desc {
+        max-width: 68ch;
       }
       .proj-visual {
         position: relative;
-        height: 140px;
+        height: 200px;
+        border-radius: var(--radius-2xl) var(--radius-2xl) 0 0;
         overflow: hidden;
-        display: grid;
-        place-items: center;
-      }
-      .proj-badge-center {
         display: flex;
-        flex-direction: column;
         align-items: center;
-        gap: 4px;
-        z-index: 1;
-      }
-      .proj-subtag {
-        font-size: 0.72rem;
-        font-weight: 700;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
-        color: rgba(255, 255, 255, 0.75);
+        justify-content: center;
       }
       .proj-video {
         position: absolute;
@@ -183,187 +322,369 @@ import { PROJECTS } from '../data/portfolio.data';
         width: 100%;
         height: 100%;
         object-fit: cover;
-        object-position: top center;
+        opacity: 0.86;
+        transition: opacity 0.3s ease, transform 0.4s ease;
+      }
+      .project-card:hover .proj-video {
+        opacity: 1;
+        transform: scale(1.03);
       }
       .video-label {
         position: absolute;
-        left: 14px;
+        left: 12px;
         bottom: 12px;
-        z-index: 2;
         display: inline-flex;
         align-items: center;
-        gap: 7px;
-        padding: 7px 11px;
+        gap: 6px;
+        padding: 4px 10px;
         border-radius: 999px;
-        color: #fff;
-        background: rgba(5, 6, 20, 0.82);
-        border: 1px solid rgba(77, 163, 255, 0.35);
-        backdrop-filter: blur(9px);
+        background: rgba(10, 14, 26, 0.78);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        backdrop-filter: blur(8px);
         font-size: 0.7rem;
-        font-weight: 700;
-        letter-spacing: 0.04em;
-        text-transform: uppercase;
+        font-weight: 600;
+        color: var(--text);
+        letter-spacing: 0.02em;
+        z-index: 2;
+        pointer-events: none;
       }
       .video-label i {
-        width: 7px;
-        height: 7px;
+        width: 6px;
+        height: 6px;
         border-radius: 50%;
-        background: #4DA3FF;
-        box-shadow: 0 0 10px rgba(77, 163, 255, 0.85);
+        background: #22c55e;
+        box-shadow: 0 0 8px #22c55e;
       }
       .video-open {
         position: absolute;
-        inset: 0;
-        z-index: 3;
-        border: 0;
-        background: transparent;
-        cursor: pointer;
-        display: grid;
-        place-items: center;
-      }
-      .video-open span {
-        width: 58px;
-        height: 58px;
-        display: grid;
-        place-items: center;
-        padding-left: 4px;
-        border-radius: 50%;
-        color: #fff;
-        background: rgba(5, 6, 20, 0.72);
-        border: 1px solid rgba(77, 163, 255, 0.48);
-        box-shadow: 0 12px 35px rgba(0, 0, 0, 0.45);
-        backdrop-filter: blur(10px);
-        opacity: 0;
-        transform: scale(0.88);
-        transition: opacity 0.2s ease, transform 0.2s ease, background 0.2s ease;
-      }
-      .proj-visual:hover .video-open span,
-      .video-open:focus-visible span {
-        opacity: 1;
-        transform: scale(1);
-      }
-      .video-open:hover span { background: rgba(77, 163, 255, 0.85); }
-      .video-modal {
-        position: fixed;
-        inset: 0;
-        z-index: 10000;
-        display: grid;
-        place-items: center;
-        padding: 24px;
-        background: rgba(3, 3, 3, 0.9);
-        backdrop-filter: blur(14px);
-        animation: modalIn 0.2s ease-out;
-      }
-      .video-modal-panel {
-        position: relative;
-        width: min(1200px, 96vw);
-        max-height: 92vh;
-        border-radius: 14px;
-        overflow: hidden;
-        border: 1px solid rgba(77, 163, 255, 0.3);
-        background: #050505;
-        box-shadow: 0 30px 100px rgba(0, 0, 0, 0.72);
-      }
-      .full-video {
-        display: block;
-        width: 100%;
-        max-height: 88vh;
-        background: #000;
-      }
-      .video-close {
-        position: absolute;
         top: 12px;
         right: 12px;
-        z-index: 2;
-        width: 42px;
-        height: 42px;
+        width: 36px;
+        height: 36px;
         border-radius: 50%;
         border: 1px solid rgba(255, 255, 255, 0.2);
-        background: rgba(8, 8, 8, 0.8);
-        color: #fff;
-        font-size: 1.7rem;
-        line-height: 1;
+        background: rgba(10, 14, 26, 0.7);
+        backdrop-filter: blur(8px);
+        color: var(--text);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
         cursor: pointer;
+        z-index: 3;
+        transition: transform 0.2s ease, background 0.2s ease;
       }
-      @keyframes modalIn { from { opacity: 0; } to { opacity: 1; } }
-      @media (hover: none) { .video-open span { opacity: 1; transform: scale(1); } }
+      .video-open:hover {
+        transform: scale(1.08);
+        background: rgba(77, 163, 255, 0.35);
+      }
+      .video-open span {
+        font-size: 0.75rem;
+        margin-left: 2px;
+      }
       .proj-glow {
         position: absolute;
-        inset: 0;
-        background: radial-gradient(circle at 30% 20%, rgba(255, 255, 255, 0.25), transparent 55%);
+        inset: -20%;
+        background: radial-gradient(
+          circle at center,
+          rgba(255, 255, 255, 0.25),
+          transparent 60%
+        );
+        filter: blur(24px);
+      }
+      .proj-badge-center {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 6px;
       }
       .proj-title-big {
         font-size: 2.2rem;
-        font-weight: 900;
+        font-weight: 800;
         letter-spacing: -0.03em;
-        color: rgba(255, 255, 255, 0.92);
-        text-shadow: 0 6px 30px rgba(0, 0, 0, 0.35);
+        color: #fff;
+      }
+      .proj-subtag {
+        font-size: 0.75rem;
+        font-weight: 600;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.7);
+      }
+      .proj-body {
+        padding: 24px;
+        display: flex;
+        flex-direction: column;
+        flex: 1;
       }
       .proj-top {
         display: flex;
         justify-content: space-between;
-        align-items: flex-start;
+        align-items: center;
         gap: 12px;
       }
-      .project-card h3 {
-        font-size: 1.08rem;
-        font-weight: 900;
+      .proj-top h3 {
         margin: 0;
+        font-size: 1.25rem;
+        font-weight: 800;
+        letter-spacing: -0.02em;
       }
       .proj-flag {
-        font-size: 0.7rem;
+        font-size: 0.68rem;
         font-weight: 700;
-        padding: 4px 10px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        padding: 3px 8px;
         border-radius: 999px;
-        background: rgba(123, 92, 255, 0.18);
-        border: 1px solid rgba(123, 92, 255, 0.4);
-        color: var(--violet);
-        white-space: nowrap;
+        background: rgba(77, 163, 255, 0.15);
+        color: var(--blue);
+        border: 1px solid rgba(77, 163, 255, 0.3);
       }
       .proj-tagline {
-        color: var(--blue);
+        font-size: 0.85rem;
         font-weight: 600;
-        font-size: 0.86rem;
+        color: var(--blue);
+        margin-top: 4px;
+        margin-bottom: 10px;
       }
       .proj-desc {
         color: var(--muted);
+        font-size: 0.9rem;
         line-height: 1.6;
-        margin: 10px 0 14px;
-        font-size: 0.92rem;
+        margin-bottom: 16px;
+        flex: 1;
       }
       .proj-tags {
         display: flex;
         flex-wrap: wrap;
+        gap: 6px;
+        margin-bottom: 20px;
+      }
+      .proj-actions {
+        display: flex;
+        gap: 14px;
+        align-items: center;
+      }
+      .proj-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--text);
+        transition: color 0.2s ease, transform 0.2s ease;
+      }
+      .proj-link:hover {
+        color: var(--blue);
+        transform: translateY(-1px);
+      }
+
+      /* Architecture & Engineering Standards Showcase */
+      .arch-showcase {
+        margin-top: 44px;
+        padding: 32px;
+        border-radius: var(--radius-2xl);
+      }
+      .arch-head {
+        margin-bottom: 24px;
+      }
+      .arch-title {
+        font-size: 1.45rem;
+        font-weight: 800;
+        letter-spacing: -0.02em;
+        margin: 0 0 6px;
+      }
+      .arch-subtitle {
+        color: var(--muted);
+        font-size: 0.92rem;
+        line-height: 1.6;
+        margin: 0;
+        max-width: 72ch;
+      }
+      .arch-tabs {
+        display: flex;
+        flex-wrap: wrap;
         gap: 8px;
+        margin-bottom: 24px;
       }
-      .proj-tags .badge-tech {
-        font-size: 0.76rem;
-        padding: 6px 10px;
+      .arch-tab {
+        padding: 8px 14px;
+        border-radius: 10px;
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid var(--stroke);
+        color: var(--muted);
+        font-size: 0.82rem;
+        font-weight: 600;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        transition: all 0.2s ease;
       }
-      @media (max-width: 980px) {
+      .arch-tab:hover {
+        color: var(--text);
+        background: rgba(255, 255, 255, 0.08);
+      }
+      .arch-tab.active {
+        background: rgba(77, 163, 255, 0.18);
+        border-color: rgba(77, 163, 255, 0.5);
+        color: #93c5fd;
+      }
+      .arch-content {
+        background: rgba(0, 0, 0, 0.22);
+        border: 1px solid var(--stroke);
+        border-radius: 16px;
+        padding: 24px;
+      }
+      .arch-layers {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        align-items: center;
+      }
+      .arch-layer-item {
+        width: 100%;
+        max-width: 680px;
+        padding: 12px 18px;
+        border-radius: 12px;
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid var(--stroke);
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        transition: border-color 0.2s ease;
+      }
+      .arch-layer-item:hover {
+        border-color: rgba(77, 163, 255, 0.4);
+      }
+      .layer-badge {
+        display: inline-block;
+        align-self: flex-start;
+        font-size: 0.68rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: var(--blue);
+        background: rgba(77, 163, 255, 0.12);
+        padding: 2px 6px;
+        border-radius: 4px;
+      }
+      .arch-layer-item strong {
+        font-size: 0.95rem;
+        color: var(--text);
+      }
+      .arch-layer-item small {
+        font-size: 0.8rem;
+        color: var(--muted2);
+      }
+      .layer-arrow {
+        font-size: 0.72rem;
+        font-weight: 700;
+        color: var(--muted2);
+        letter-spacing: 0.05em;
+        padding: 2px 0;
+      }
+      .arch-grid-2 {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+      }
+      .arch-box {
+        padding: 18px;
+        border-radius: 12px;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid var(--stroke);
+      }
+      .arch-box h4 {
+        margin: 0 0 12px;
+        font-size: 0.95rem;
+        color: var(--blue);
+        font-weight: 700;
+      }
+      .arch-box ul {
+        margin: 0;
+        padding-left: 18px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        color: var(--muted);
+        font-size: 0.84rem;
+        line-height: 1.5;
+      }
+      .arch-box li strong {
+        color: var(--text);
+      }
+      .arch-box code {
+        background: rgba(255, 255, 255, 0.08);
+        padding: 1px 5px;
+        border-radius: 4px;
+        font-size: 0.78rem;
+        color: #93c5fd;
+      }
+
+      /* Video Modal */
+      .video-modal {
+        position: fixed;
+        inset: 0;
+        z-index: 9999;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(6, 9, 18, 0.85);
+        backdrop-filter: blur(12px);
+        padding: 24px;
+      }
+      .video-modal-panel {
+        position: relative;
+        width: min(920px, 94vw);
+        max-height: 90vh;
+        border-radius: 16px;
+        overflow: hidden;
+        background: #000;
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        box-shadow: 0 24px 64px rgba(0, 0, 0, 0.7);
+      }
+      .video-close {
+        position: absolute;
+        top: 14px;
+        right: 14px;
+        width: 38px;
+        height: 38px;
+        border-radius: 50%;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        background: rgba(0, 0, 0, 0.6);
+        color: #fff;
+        font-size: 1.4rem;
+        line-height: 1;
+        cursor: pointer;
+        z-index: 5;
+        transition: transform 0.2s ease, background 0.2s ease;
+      }
+      .video-close:hover {
+        transform: scale(1.1);
+        background: rgba(255, 255, 255, 0.2);
+      }
+      .full-video {
+        width: 100%;
+        display: block;
+        max-height: 80vh;
+      }
+
+      @media (max-width: 1024px) {
         .projects-grid {
-          grid-template-columns: 1fr 1fr;
+          grid-template-columns: repeat(2, 1fr);
         }
       }
-      @media (max-width: 680px) {
+      @media (max-width: 768px) {
         .projects-grid {
           grid-template-columns: 1fr;
         }
-        .video-modal { padding: 8px; }
-        .video-modal-panel { width: 100%; border-radius: 9px; }
-        .video-close { width: 38px; height: 38px; top: 8px; right: 8px; }
-        .project-card:only-child .proj-visual { height: 185px; }
-        .proj-body { padding: 20px 16px; }
-        .proj-actions { flex-wrap: wrap; gap: 10px; }
-        .proj-link { min-height: 44px; }
-        .full-video { max-height: calc(100dvh - 16px); }
-      }
-      @media (max-width: 380px) {
-        .proj-top { flex-direction: column; }
-        .proj-flag { align-self: flex-start; }
-        .project-card:only-child .proj-visual,
-        .proj-visual { height: 160px; }
-        .video-label { left: 9px; bottom: 9px; font-size: 0.61rem; }
+        .arch-grid-2 {
+          grid-template-columns: 1fr;
+        }
+        .arch-showcase {
+          padding: 20px;
+        }
       }
     `,
   ],
@@ -371,6 +692,7 @@ import { PROJECTS } from '../data/portfolio.data';
 export class ProjectsComponent {
   readonly projects = PROJECTS;
   readonly activeVideo = signal<string | null>(null);
+  readonly selectedArchTab = signal<'clean-arch' | 'security' | 'database' | 'testing-cicd'>('clean-arch');
 
   openVideo(src: string): void {
     this.activeVideo.set(src);

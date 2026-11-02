@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Abdullah Zulfiqar - Resume</title>
+  <style>
+    @page {
+      size: A4;
+      margin: 12mm 14mm;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      color: #1a202c;
+      background: #fff;
+      font-size: 9.5pt;
+      line-height: 1.38;
+      -webkit-font-smoothing: antialiased;
+    }
+    .header {
+      text-align: center;
+      margin-bottom: 10pt;
+      padding-bottom: 8pt;
+      border-bottom: 1.5pt solid #2b6cb0;
+    }
+    .name {
+      font-size: 20pt;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: #1a365d;
+      text-transform: uppercase;
+      margin-bottom: 2pt;
+    }
+    .title {
+      font-size: 11pt;
+      font-weight: 700;
+      color: #2b6cb0;
+      margin-bottom: 5pt;
+      letter-spacing: 0.04em;
+    }
+    .contact-line {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10pt;
+      font-size: 8.5pt;
+      color: #4a5568;
+    }
+    .contact-line a {
+      color: #2b6cb0;
+      text-decoration: none;
+    }
+    .section {
+      margin-bottom: 9pt;
+    }
+    .section-title {
+      font-size: 10pt;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #1a365d;
+      border-bottom: 1pt solid #cbd5e0;
+      padding-bottom: 2pt;
+      margin-bottom: 5pt;
+    }
+    .summary-text {
+      font-size: 9pt;
+      color: #2d3748;
+      text-align: justify;
+      line-height: 1.4;
+    }
+    .skills-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 3pt;
+      font-size: 8.8pt;
+    }
+    .skill-row strong {
+      color: #1a202c;
+      font-weight: 700;
+    }
+    .skill-row span {
+      color: #4a5568;
+    }
+    .job {
+      margin-bottom: 6pt;
+    }
+    .job-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      font-size: 9.5pt;
+      margin-bottom: 1pt;
+    }
+    .job-role {
+      font-weight: 800;
+      color: #1a202c;
+    }
+    .job-company {
+      font-weight: 700;
+      color: #2b6cb0;
+    }
+    .job-dates {
+      font-weight: 600;
+      color: #718096;
+      font-size: 8.5pt;
+    }
+    .job-sub {
+      font-size: 8pt;
+      color: #718096;
+      font-style: italic;
+      margin-bottom: 3pt;
+    }
+    ul.bullets {
+      padding-left: 14pt;
+      margin-top: 2pt;
+    }
+    ul.bullets li {
+      font-size: 8.8pt;
+      color: #2d3748;
+      margin-bottom: 2pt;
+      line-height: 1.35;
+    }
+    ul.bullets li strong {
+      color: #1a202c;
+    }
+    .project-item {
+      margin-bottom: 5pt;
+    }
+    .project-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      font-size: 9pt;
+      margin-bottom: 1pt;
+    }
+    .project-title {
+      font-weight: 800;
+      color: #1a202c;
+    }
+    .project-stack {
+      font-size: 8pt;
+      font-weight: 600;
+      color: #2b6cb0;
+    }
+    .edu-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 3pt;
+      font-size: 9pt;
+    }
+    .edu-degree {
+      font-weight: 700;
+      color: #1a202c;
+    }
+    .edu-school {
+      color: #4a5568;
+      font-size: 8.5pt;
+    }
+    .edu-date {
+      color: #718096;
+      font-size: 8.5pt;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="name">Abdullah Zulfiqar</div>
+    <div class="title">.NET Full Stack Developer</div>
+    <div class="contact-line">
+      <span>Lahore, Pakistan (PKT, UTC+5)</span>
+      <span>•</span>
+      <span>WhatsApp: +92 333 4320471</span>
+      <span>•</span>
+      <a href="mailto:abdullahzulfiqar137@gmail.com">abdullahzulfiqar137@gmail.com</a>
+    </div>
+    <div class="contact-line" style="margin-top: 3pt;">
+      <a href="https://abdullahzulfiqar137.github.io/Portfolio/">Live Portfolio</a>
+      <span>•</span>
+      <a href="https://github.com/abdullahzulfiqar137">GitHub</a>
+      <span>•</span>
+      <a href="https://www.linkedin.com/in/abdullah-zulfiqar-/">LinkedIn</a>
+      <span>•</span>
+      <span style="color: #2b6cb0; font-weight: 600;">Flexible Overlap: US (EST) &amp; Europe (GMT/CET)</span>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Professional Summary</div>
+    <p class="summary-text">
+      Results-driven <strong>.NET Full Stack Developer</strong> with 1+ year of hands-on experience designing and delivering scalable, enterprise-grade web applications using C#, ASP.NET Core (.NET 8), Angular, TypeScript, Entity Framework Core, and SQL Server. Experienced in architecting secure RESTful APIs, implementing Clean Architecture and Repository patterns, writing automated unit tests (xUnit / Moq), optimizing relational databases, and developing responsive Single Page Applications (SPAs). Comfortable collaborating in distributed, asynchronous remote environments with flexible working overlap across US (EST), UK (GMT), and European (CET) time zones.
+    </p>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Technical Skills</div>
+    <div class="skills-grid">
+      <div class="skill-row">
+        <strong>Backend Development:</strong>
+        <span>C#, .NET 8, ASP.NET Core, .NET Web API, Entity Framework Core (Code-First), LINQ, RESTful APIs</span>
+      </div>
+      <div class="skill-row">
+        <strong>Frontend Development:</strong>
+        <span>Angular, TypeScript, JavaScript (ES6+), HTML5, CSS3 / SCSS, RxJS, Reactive Forms, Responsive Web Design</span>
+      </div>
+      <div class="skill-row">
+        <strong>Architecture &amp; Security:</strong>
+        <span>Clean Architecture, Repository Pattern, Dependency Injection (DI), SOLID Principles, JWT, ASP.NET Core Identity, RBAC</span>
+      </div>
+      <div class="skill-row">
+        <strong>Testing &amp; QA:</strong>
+        <span>xUnit, NUnit, Moq, Unit Testing, Integration Testing, API Automated Testing, Jasmine, Karma</span>
+      </div>
+      <div class="skill-row">
+        <strong>Database Management:</strong>
+        <span>Microsoft SQL Server, T-SQL, Stored Procedures, Schema Normalization, Non-Clustered Indexes, Query Optimization</span>
+      </div>
+      <div class="skill-row">
+        <strong>DevOps &amp; Developer Tools:</strong>
+        <span>Docker &amp; Containers, GitHub Actions (CI/CD), Git &amp; GitHub (PR Workflows), Visual Studio 2022, VS Code, Postman, Swagger</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Professional Experience</div>
+    <div class="job">
+      <div class="job-header">
+        <div>
+          <span class="job-role">Full Stack .NET Developer</span> — <span class="job-company">Awatech Technology Solutions</span>
+        </div>
+        <div class="job-dates">2024 — Present</div>
+      </div>
+      <div class="job-sub">Lahore, Pakistan · Hybrid / Remote (Distributed Team Collaboration)</div>
+      <ul class="bullets">
+        <li>Architected and implemented high-performance RESTful APIs in ASP.NET Core (.NET 8) utilizing Repository and Dependency Injection patterns, powering <strong>20+ core business endpoints</strong> and transactional workflows.</li>
+        <li>Engineered dynamic, modular frontend features in Angular and TypeScript using RxJS and Reactive Forms for clean asynchronous state management, route guards, and client-side validation.</li>
+        <li>Automated database migrations and schema evolution with Entity Framework Core (Code-First), ensuring transactional integrity and zero data loss across deployments.</li>
+        <li>Optimized SQL Server database schemas, stored procedures, and composite indexes, cutting critical query execution times by <strong>~35%</strong> and resolving latency bottlenecks under peak load.</li>
+        <li>Authored automated unit and integration tests with <strong>xUnit and Moq</strong> to validate business logic and controller endpoints, increasing code reliability for regression-free releases.</li>
+        <li>Secured <strong>15+ multi-role API endpoints</strong> using JWT authentication and ASP.NET Core Identity with role-based authorization; streamlined team collaboration via Swagger/OpenAPI and Postman collections.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Selected Projects</div>
+    <div class="project-item">
+      <div class="project-header">
+        <span class="project-title">BizOps Platform — Enterprise Business Operations &amp; ERP</span>
+        <span class="project-stack">ASP.NET Core 8 · Angular · EF Core · SQL Server · xUnit · JWT</span>
+      </div>
+      <ul class="bullets">
+        <li>Engineered a scalable full-stack enterprise platform supporting multi-role authentication, transaction workflows, and data auditing following Clean Architecture and Repository patterns.</li>
+        <li>Designed modular Angular dashboards with reactive forms and real-time state streams; backed by automated xUnit test suites.</li>
+      </ul>
+    </div>
+    <div class="project-item">
+      <div class="project-header">
+        <span class="project-title">HospitalSaaS — Multi-Tenant Clinical &amp; Healthcare Platform</span>
+        <span class="project-stack">ASP.NET Core · Angular · SQL Server · Entity Framework Core · REST API</span>
+      </div>
+      <ul class="bullets">
+        <li>Engineered a healthcare management SaaS with granular role-based access control for Administrators, Doctors, and Staff handling patient onboarding, appointments, and billing.</li>
+      </ul>
+    </div>
+    <div class="project-item">
+      <div class="project-header">
+        <span class="project-title">Developer Portfolio — High-Performance Engineering Showcase</span>
+        <span class="project-stack">Angular · TypeScript · GitHub Actions (CI/CD) · Lighthouse 95+</span>
+      </div>
+      <ul class="bullets">
+        <li>Crafted a responsive developer showcase following Linear/Vercel design principles with automated GitHub Actions CI/CD pipeline deployments.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Education &amp; Languages</div>
+    <div class="edu-row">
+      <div>
+        <div class="edu-degree">Bachelor of Science in Information Technology and Management</div>
+        <div class="edu-school">National College of Business Administration and Economics (NCBA&amp;E), Lahore, Pakistan</div>
+      </div>
+      <div class="edu-date">Expected 2027</div>
+    </div>
+    <div class="edu-row" style="margin-top: 2pt;">
+      <div>
+        <div class="edu-degree">Associate Degree Program (ADP) in Information Technology Management</div>
+        <div class="edu-school">Riphah International University, Lahore, Pakistan</div>
+      </div>
+      <div class="edu-date">2022 — 2024</div>
+    </div>
+    <div style="font-size: 8.5pt; color: #4a5568; margin-top: 4pt;">
+      <strong>Languages:</strong> English (Professional Working / Fluent), Urdu (Native), Punjabi (Native)
+    </div>
+  </div>
+</body>
+</html>
