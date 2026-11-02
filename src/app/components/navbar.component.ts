@@ -20,6 +20,9 @@ import { PROFILE } from '../data/portfolio.data';
           <a class="mobile-resume-link" [href]="profile.resumeUrl" download="Abdullah_Zulfiqar_Resume.pdf" (click)="closeMenu()">
             Download CV ↓
           </a>
+          <a class="mobile-hire-link" href="#contact" (click)="closeMenu()">
+            Hire Me →
+          </a>
         </nav>
 
         <div class="nav-actions">
@@ -36,17 +39,11 @@ import { PROFILE } from '../data/portfolio.data';
             <span>CV</span>
           </a>
 
-          <button
-            class="theme-toggle"
-            type="button"
-            (click)="theme.toggle()"
-            [attr.aria-label]="theme.theme() === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'"
-          >
-            <span class="theme-icon">{{ theme.theme() === 'dark' ? '☾' : '☀' }}</span>
-          </button>
-
-          <a class="btn btn-premium btn-primary-premium nav-cta" [href]="'#contact'">
-            Hire Me
+          <a class="nav-hire-btn" href="#contact">
+            <span>Hire Me</span>
+            <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.4">
+              <path d="M5 12h14M12 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
           </a>
 
           <button
@@ -90,6 +87,7 @@ import { PROFILE } from '../data/portfolio.data';
         align-items: center;
         justify-content: space-between;
         gap: 16px;
+        flex-wrap: nowrap;
       }
       .brand {
         display: flex;
@@ -97,6 +95,7 @@ import { PROFILE } from '../data/portfolio.data';
         gap: 10px;
         font-weight: 800;
         letter-spacing: -0.02em;
+        flex-shrink: 0;
       }
       .brand-mark {
         width: 34px;
@@ -132,72 +131,115 @@ import { PROFILE } from '../data/portfolio.data';
         color: var(--text);
         background: rgba(255, 255, 255, 0.06);
       }
-      .mobile-resume-link {
+      .mobile-resume-link,
+      .mobile-hire-link {
         display: none !important;
       }
       .nav-actions {
         display: flex;
         align-items: center;
-        gap: 10px;
+        gap: 8px;
+        flex-shrink: 0;
       }
-      .nav-resume-btn {
+      .nav-resume-btn,
+      .nav-hire-btn {
         display: inline-flex;
         align-items: center;
-        gap: 6px;
-        padding: 8px 14px;
+        justify-content: center;
+        gap: 7px;
+        height: 38px;
+        padding: 0 16px;
         border-radius: 999px;
-        border: 1px solid rgba(77, 163, 255, 0.35);
-        background: rgba(77, 163, 255, 0.08);
-        color: #eef2ff;
-        font-size: 0.82rem;
-        font-weight: 700;
-        letter-spacing: 0.02em;
+        font-family: inherit;
+        font-size: 0.83rem;
+        font-weight: 600;
+        letter-spacing: -0.01em;
         text-decoration: none;
-        transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+        box-sizing: border-box;
+        line-height: 1;
+        white-space: nowrap;
+        user-select: none;
+        cursor: pointer;
+        transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+                    background 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+                    border-color 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+                    box-shadow 0.2s cubic-bezier(0.16, 1, 0.3, 1);
       }
-      .nav-resume-btn:hover {
-        background: rgba(77, 163, 255, 0.18);
-        border-color: rgba(77, 163, 255, 0.65);
-        transform: translateY(-1px);
-        color: #fff;
+      .nav-resume-btn {
+        background: rgba(255, 255, 255, 0.05);
+        color: #e2e8f0;
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
       }
       .nav-resume-btn svg {
-        color: var(--blue);
+        color: #38bdf8;
+        transition: transform 0.2s ease;
+      }
+      .nav-resume-btn:hover {
+        background: rgba(255, 255, 255, 0.1);
+        border-color: rgba(56, 189, 248, 0.45);
+        color: #ffffff;
+        transform: translateY(-1px);
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+      }
+      .nav-resume-btn:hover svg {
+        transform: translateY(1.5px);
+      }
+      .nav-resume-btn:active {
+        transform: translateY(0);
       }
       :host-context([data-theme='light']) .nav-resume-btn {
-        color: #1a2238;
+        background: rgba(0, 0, 0, 0.04);
+        color: #1e293b;
+        border-color: rgba(0, 0, 0, 0.1);
       }
-      .theme-toggle {
-        width: 40px;
-        height: 40px;
-        border-radius: 999px;
-        border: 1px solid var(--stroke);
-        background: rgba(255, 255, 255, 0.06);
-        color: var(--text);
-        cursor: pointer;
-        display: grid;
-        place-items: center;
-        transition: border-color 0.2s ease, transform 0.2s ease;
+      :host-context([data-theme='light']) .nav-resume-btn:hover {
+        background: rgba(0, 0, 0, 0.08);
+        border-color: rgba(56, 189, 248, 0.6);
+        color: #0f172a;
       }
-      .theme-toggle:hover {
-        border-color: rgba(77, 163, 255, 0.5);
+
+      .nav-hire-btn {
+        background: linear-gradient(135deg, #2563eb 0%, #4f46e5 50%, #7c3aed 100%);
+        color: #ffffff;
+        border: 1px solid rgba(255, 255, 255, 0.22);
+        box-shadow:
+          inset 0 1px 0 rgba(255, 255, 255, 0.32),
+          0 4px 16px rgba(79, 70, 229, 0.35);
+      }
+      .nav-hire-btn svg {
+        color: rgba(255, 255, 255, 0.9);
+        transition: transform 0.2s ease;
+      }
+      .nav-hire-btn:hover {
+        background: linear-gradient(135deg, #3b82f6 0%, #6366f1 50%, #8b5cf6 100%);
+        border-color: rgba(255, 255, 255, 0.4);
+        box-shadow:
+          inset 0 1px 0 rgba(255, 255, 255, 0.45),
+          0 6px 22px rgba(99, 102, 241, 0.55);
         transform: translateY(-1px);
+        color: #ffffff;
       }
-      .theme-icon {
-        font-size: 1.05rem;
+      .nav-hire-btn:hover svg {
+        transform: translateX(2.5px);
       }
-      .nav-cta {
-        padding: 10px 22px;
-        border-radius: 999px;
-        box-shadow: 0 8px 25px rgba(100, 80, 255, 0.3);
+      .nav-hire-btn:active {
+        transform: translateY(0);
+        box-shadow:
+          inset 0 1px 0 rgba(255, 255, 255, 0.18),
+          0 2px 8px rgba(79, 70, 229, 0.3);
       }
+
       .hamburger {
         display: none;
-        width: 40px;
-        height: 40px;
-        border-radius: 12px;
-        border: 1px solid var(--stroke);
-        background: rgba(255, 255, 255, 0.06);
+        width: 38px;
+        height: 38px;
+        min-width: 38px;
+        flex-shrink: 0;
+        border-radius: 10px;
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        background: rgba(255, 255, 255, 0.05);
         cursor: pointer;
         position: relative;
       }
@@ -321,11 +363,24 @@ import { PROFILE } from '../data/portfolio.data';
         .mobile-resume-link::before {
           display: none !important;
         }
+        .mobile-hire-link {
+          display: flex !important;
+          margin-top: 8px;
+          color: #fff !important;
+          background: linear-gradient(135deg, #2563eb 0%, #4f46e5 50%, #7c3aed 100%) !important;
+          justify-content: center;
+          font-weight: 700;
+          box-shadow: 0 4px 16px rgba(79, 70, 229, 0.4);
+        }
+        .mobile-hire-link::before {
+          display: none !important;
+        }
         .hamburger {
           display: block;
           z-index: 2;
         }
-        .nav-cta {
+        .nav-hire-btn,
+        .nav-resume-btn {
           display: none;
         }
       }

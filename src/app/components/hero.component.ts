@@ -320,8 +320,9 @@ import { RevealDirective } from '../directives/reveal.directive';
     }
     .ide-glow {
       position: absolute;
-      width: 400px;
+      width: min(400px, 90vw);
       height: 340px;
+      max-width: 100%;
       border-radius: 50%;
       background: radial-gradient(circle, rgba(123, 92, 255, 0.28), rgba(59, 130, 246, 0.15), transparent 70%);
       filter: blur(40px);
