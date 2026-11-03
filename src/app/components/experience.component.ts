@@ -128,6 +128,31 @@ import { EXPERIENCE } from '../data/portfolio.data';
       .exp-list li {
         margin-bottom: 6px;
       }
+      @media (max-width: 560px) {
+        .timeline:before {
+          left: 7px;
+        }
+        .timeline-item {
+          padding-left: 28px;
+          margin-bottom: 20px;
+        }
+        .timeline-dot {
+          left: 0;
+          top: 18px;
+          width: 14px;
+          height: 14px;
+        }
+        .exp-card {
+          padding: 18px 16px;
+        }
+        .exp-card h4 {
+          font-size: 1.05rem;
+        }
+        .exp-list {
+          padding-left: 14px;
+          font-size: 0.88rem;
+        }
+      }
     `,
   ],
 })

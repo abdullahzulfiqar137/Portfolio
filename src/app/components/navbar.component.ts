@@ -13,16 +13,31 @@ import { PROFILE } from '../data/portfolio.data';
           <span class="brand-name">Abdullah Zulfiqar<span class="brand-dot"></span></span>
         </a>
 
+        <!-- Mobile Drawer Backdrop Overlay -->
+        <div class="nav-backdrop" [class.show]="menuOpen()" (click)="closeMenu()" aria-hidden="true"></div>
+
         <nav id="primary-navigation" class="nav-links" [class.show]="menuOpen()" aria-label="Primary">
+          <div class="mobile-drawer-header">
+            <span class="drawer-title">Navigation</span>
+            <button class="drawer-close" type="button" (click)="closeMenu()" aria-label="Close navigation menu">✕</button>
+          </div>
           @for (item of links; track item.href) {
             <a [href]="item.href" (click)="closeMenu()">{{ item.label }}</a>
           }
-          <a class="mobile-resume-link" [href]="profile.resumeUrl" download="Abdullah_Zulfiqar_Resume.pdf" (click)="closeMenu()">
-            Download CV ↓
-          </a>
-          <a class="mobile-hire-link" href="#contact" (click)="closeMenu()">
-            Hire Me →
-          </a>
+          <div class="mobile-nav-ctas">
+            <a class="mobile-resume-link" [href]="profile.resumeUrl" download="Abdullah_Zulfiqar_Resume.pdf" (click)="closeMenu()">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2">
+                <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+              <span>Download CV</span>
+            </a>
+            <a class="mobile-hire-link" href="#contact" (click)="closeMenu()">
+              <span>Hire Me</span>
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.4">
+                <path d="M5 12h14M12 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </a>
+          </div>
         </nav>
 
         <div class="nav-actions">
@@ -275,11 +290,82 @@ import { PROFILE } from '../data/portfolio.data';
         transform: translate(-50%, -6px) rotate(-45deg);
       }
 
-      @media (max-width: 860px) {
+      /* Backdrop overlay */
+      .nav-backdrop {
+        position: fixed;
+        inset: 0;
+        background: rgba(3, 4, 12, 0.65);
+        backdrop-filter: blur(4px);
+        -webkit-backdrop-filter: blur(4px);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s ease;
+        z-index: 95;
+      }
+      .nav-backdrop.show {
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      .mobile-drawer-header {
+        display: none;
+      }
+
+      /* Compact desktop menu for laptops and split windows (992px - 1180px) */
+      @media (min-width: 993px) and (max-width: 1180px) {
+        .nav-links {
+          gap: 3px;
+        }
+        .nav-links a {
+          padding: 7px 9px;
+          font-size: 0.82rem;
+        }
+        .nav-resume-btn,
+        .nav-hire-btn {
+          height: 34px;
+          padding: 0 12px;
+          font-size: 0.78rem;
+        }
+      }
+
+      @media (max-width: 992px) {
         .navbar,
         .navbar.scrolled {
           backdrop-filter: none;
           -webkit-backdrop-filter: none;
+        }
+        .mobile-drawer-header {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          width: 100%;
+          padding-bottom: 14px;
+          margin-bottom: 10px;
+          border-bottom: 1px solid var(--stroke);
+        }
+        .drawer-title {
+          color: var(--blue);
+          font-size: 0.72rem;
+          font-weight: 800;
+          letter-spacing: 0.18em;
+          text-transform: uppercase;
+        }
+        .drawer-close {
+          background: rgba(255, 255, 255, 0.06);
+          border: 1px solid var(--stroke);
+          color: var(--text);
+          width: 32px;
+          height: 32px;
+          border-radius: 8px;
+          display: grid;
+          place-items: center;
+          cursor: pointer;
+          font-size: 0.88rem;
+          transition: background 0.2s ease, border-color 0.2s ease;
+        }
+        .drawer-close:hover {
+          background: rgba(255, 255, 255, 0.12);
+          border-color: rgba(77, 163, 255, 0.45);
         }
         .nav-links {
           counter-reset: mobile-nav;
@@ -287,23 +373,24 @@ import { PROFILE } from '../data/portfolio.data';
           top: 0;
           right: 0;
           bottom: auto;
-          width: min(78vw, 320px);
+          width: min(82vw, 340px);
           height: 100vh;
           height: 100dvh;
+          z-index: 105;
           flex-direction: column;
           align-items: flex-start;
           justify-content: flex-start;
           gap: 8px;
-          padding: max(96px, calc(env(safe-area-inset-top) + 80px)) 22px 28px;
+          padding: max(24px, env(safe-area-inset-top)) 20px 28px;
           overflow-y: auto;
           overscroll-behavior: contain;
           background:
-            radial-gradient(circle at 100% 0, rgba(77, 100, 255, 0.13), transparent 34%),
-            rgba(5, 6, 20, 0.985);
+            radial-gradient(circle at 100% 0, rgba(77, 100, 255, 0.16), transparent 40%),
+            rgba(6, 8, 22, 0.98);
           backdrop-filter: blur(20px);
           -webkit-backdrop-filter: blur(20px);
           border-left: 1px solid var(--stroke);
-          box-shadow: -20px 0 60px rgba(0, 0, 0, 0.38);
+          box-shadow: -20px 0 60px rgba(0, 0, 0, 0.5);
           transform: translateX(100%);
           transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
         }
@@ -311,19 +398,6 @@ import { PROFILE } from '../data/portfolio.data';
           background:
             radial-gradient(circle at 100% 0, rgba(77, 100, 255, 0.12), transparent 34%),
             rgba(246, 248, 255, 0.985);
-        }
-        .nav-links::before {
-          content: 'Navigation';
-          display: block;
-          width: 100%;
-          margin: 0 0 12px;
-          padding: 0 14px 14px;
-          border-bottom: 1px solid var(--stroke);
-          color: var(--blue);
-          font-size: 0.68rem;
-          font-weight: 800;
-          letter-spacing: 0.18em;
-          text-transform: uppercase;
         }
         .nav-links.show {
           transform: translateX(0);
@@ -334,41 +408,61 @@ import { PROFILE } from '../data/portfolio.data';
           display: flex;
           align-items: center;
           gap: 14px;
-          padding: 13px 14px;
+          padding: 12px 14px;
           border-radius: 10px;
-          font-size: 0.9rem;
+          font-size: 0.92rem;
+          min-height: 44px;
+          box-sizing: border-box;
           transition: color 0.2s ease, background 0.2s ease, transform 0.2s ease;
         }
         .nav-links a::before {
           content: '0' counter(mobile-nav);
-          color: rgba(255, 91, 61, 0.72);
-          font-size: 0.62rem;
+          color: rgba(77, 163, 255, 0.85);
+          font-size: 0.68rem;
           font-weight: 800;
           letter-spacing: 0.08em;
         }
         .nav-links a:hover,
         .nav-links a:focus-visible {
           color: var(--text);
-          background: rgba(77, 100, 255, 0.1);
+          background: rgba(77, 100, 255, 0.12);
           transform: translateX(4px);
+        }
+        .mobile-nav-ctas {
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+          width: 100%;
+          margin-top: 14px;
+          padding-top: 14px;
+          border-top: 1px solid var(--stroke);
         }
         .mobile-resume-link {
           display: flex !important;
-          margin-top: 14px;
+          align-items: center;
+          justify-content: center;
+          gap: 8px;
+          width: 100%;
+          min-height: 44px;
           color: #fff !important;
           border: 1px solid rgba(77, 163, 255, 0.4);
           background: rgba(77, 163, 255, 0.14) !important;
-          justify-content: center;
+          border-radius: 10px;
+          font-weight: 600;
         }
         .mobile-resume-link::before {
           display: none !important;
         }
         .mobile-hire-link {
           display: flex !important;
-          margin-top: 8px;
+          align-items: center;
+          justify-content: center;
+          gap: 8px;
+          width: 100%;
+          min-height: 44px;
           color: #fff !important;
           background: linear-gradient(135deg, #2563eb 0%, #4f46e5 50%, #7c3aed 100%) !important;
-          justify-content: center;
+          border-radius: 10px;
           font-weight: 700;
           box-shadow: 0 4px 16px rgba(79, 70, 229, 0.4);
         }
@@ -386,8 +480,8 @@ import { PROFILE } from '../data/portfolio.data';
       }
       @media (max-width: 480px) {
         .navbar { padding: 12px 0; }
-        .nav-links { width: 100vw; }
-        .brand-name { font-size: clamp(.78rem, 3.7vw, .94rem); }
+        .nav-links { width: min(88vw, 320px); }
+        .brand-name { font-size: clamp(.82rem, 3.8vw, .98rem); }
         .brand-mark { width: 32px; height: 32px; }
         .nav-actions { gap: 6px; }
       }
@@ -433,7 +527,7 @@ export class NavbarComponent implements OnDestroy {
 
   @HostListener('window:resize')
   onResize(): void {
-    if (window.innerWidth > 860 && this.menuOpen()) this.closeMenu();
+    if (window.innerWidth > 992 && this.menuOpen()) this.closeMenu();
   }
 
   ngOnDestroy(): void {

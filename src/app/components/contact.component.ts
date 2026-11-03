@@ -289,6 +289,7 @@ import { PROFILE } from '../data/portfolio.data';
       }
       .field input,
       .field textarea {
+        font-size: 16px;
         padding: 12px 14px;
         border-radius: 12px;
         border: 1px solid var(--stroke);
@@ -340,6 +341,18 @@ import { PROFILE } from '../data/portfolio.data';
       @media (max-width: 820px) {
         .contact-grid {
           grid-template-columns: 1fr;
+          gap: 18px;
+        }
+      }
+      @media (max-width: 480px) {
+        .contact-form {
+          padding: 20px 16px;
+        }
+        .contact-item {
+          padding: 14px 16px;
+        }
+        .email-item {
+          flex-wrap: wrap;
         }
       }
       @keyframes fadeIn {

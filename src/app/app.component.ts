@@ -1,4 +1,4 @@
-import {
+﻿import {
   Component,
   ElementRef,
   OnDestroy,
@@ -70,7 +70,8 @@ export class AppComponent implements OnInit, OnDestroy {
     requestAnimationFrame(() => window.scrollTo(0, 0));
 
     const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (!reduce) {
+    const isTouch = window.matchMedia('(pointer: coarse)').matches || ('ontouchstart' in window);
+    if (!reduce && !isTouch) {
       this.animateCursor();
       window.addEventListener('mousemove', (e) => this.onMouseMove(e));
       window.addEventListener('mousedown', () => this.toggleCursor(true));

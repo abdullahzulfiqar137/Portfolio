@@ -67,7 +67,7 @@ body{
   min-width: 320px;
 }
 
-*{ box-sizing:border-box; }
+*, *::before, *::after{ box-sizing:border-box; }
 img, video, canvas, svg{ max-width: 100%; }
 img, video{ height: auto; }
 a{ color: inherit; text-decoration:none; }
@@ -328,6 +328,10 @@ button, input, textarea{
 main, header, footer{
   position: relative;
   z-index: 1;
+  width: 100%;
+}
+main {
+  overflow-x: clip;
 }
 
 main > *{ display: block; position: relative; }
@@ -499,7 +503,7 @@ main > *:not(:first-child)::before{
   *, *::before, *::after{ animation-duration: .01ms !important; animation-iteration-count: 1 !important; }
 }
 
-@media (pointer: coarse){ #cursor{ display:none; } }
+@media (pointer: coarse), (hover: none), (max-width: 992px){ #cursor{ display:none !important; } }
 
 /* Premium Purple/Blue Design System */
 body .section:nth-of-type(even){
@@ -598,63 +602,93 @@ body .nav-cta{ color: #fff; }
   body .glass:hover{ border-color: rgba(77,163,255,.38) !important; }
 }
 
-@media (max-width: 1050px){
-  body .services-grid{ grid-template-columns: repeat(3,1fr) !important; }
+/* Laptops & Tablets (max-width: 1080px) */
+@media (max-width: 1080px){
+  body .projects-grid{ grid-template-columns: repeat(2, 1fr) !important; gap: 18px !important; }
+  body .services-grid{ grid-template-columns: repeat(2, 1fr) !important; gap: 16px !important; }
 }
+
+/* Medium Tablets & Landscape Phones (max-width: 900px) */
 @media (max-width: 900px){
-  .section{ padding: 88px 0; }
-  .section-title{ font-size: clamp(2rem, 7vw, 3.25rem); }
+  .section{ padding: 84px 0; }
+  .section-title{ font-size: clamp(2rem, 6.5vw, 3.25rem); }
   body .about-copy,
   body .exp-card,
-  body .contact-form{ padding: 28px !important; }
+  body .contact-form{ padding: 26px !important; }
+  body .about-copy::after{ font-size: 6rem; }
+  body .exp-list{ grid-template-columns: 1fr; }
 }
-@media (max-width: 760px){
-  .section{ padding: 78px 0; }
-  body .skills-grid,
-  body .services-grid{ grid-template-columns: 1fr !important; }
+
+/* Mobile Nav Drawer override (max-width: 992px) */
+@media (max-width: 992px){
+  body .nav-links a{
+    font-size: 0.92rem !important;
+    text-transform: none !important;
+    letter-spacing: normal !important;
+  }
+}
+
+/* Phones & Small Tablets (max-width: 768px) */
+@media (max-width: 768px){
+  .section{ padding: 72px 0; }
+  body .projects-grid{ grid-template-columns: 1fr !important; gap: 16px !important; }
+  body .skills-grid{ grid-template-columns: 1fr !important; }
+  body .services-grid{ grid-template-columns: 1fr !important; gap: 14px !important; }
   body .svc-card:nth-child(even),
   body .project-card:nth-child(2){ transform: none; }
   body .exp-list{ grid-template-columns: 1fr; }
   body .ach-card + .ach-card{ border-left: 0; }
   body .ach-grid{ padding: 20px 10px !important; }
   .glass{ backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
-  .to-top{ right: 14px; bottom: max(14px, env(safe-area-inset-bottom)); }
+  .to-top{
+    right: max(14px, env(safe-area-inset-right));
+    bottom: max(14px, env(safe-area-inset-bottom));
+  }
 }
+
+/* Standard Mobile Phones (max-width: 480px) */
 @media (max-width: 480px){
-  .container{ padding-inline: 16px; }
-  .section{ padding: 68px 0; }
-  .section-title{ font-size: clamp(1.85rem, 10vw, 2.6rem); }
-  .section-subtitle{ font-size: .93rem; }
+  .container{
+    padding-inline: max(16px, env(safe-area-inset-left));
+    padding-right: max(16px, env(safe-area-inset-right));
+  }
+  .section{ padding: 62px 0; }
+  .section-title{ font-size: clamp(1.8rem, 8.5vw, 2.45rem); }
+  .section-subtitle{ font-size: .92rem; }
   body .about-copy,
   body .edu-card,
   body .lang-card,
   body .exp-card,
   body .contact-form,
   body .skill-card,
-  body .svc-card{ padding: 21px !important; }
+  body .svc-card{ padding: 20px 16px !important; }
   body .contact-item{ padding: 14px !important; }
-  .badge-tech{ padding: 7px 10px; font-size: .78rem; }
+  .badge-tech{ padding: 6px 10px; font-size: .76rem; }
   .btn-premium{ min-height: 44px; }
 }
 
-/* Cross-device safeguards */
+/* Small Screen Phones (e.g. iPhone SE, 320px - 380px) */
 @media (max-width: 380px){
-  .container{ padding-inline: 12px; }
-  .section{ padding-block: 58px; }
-  .section-title{ font-size: clamp(1.72rem, 9.5vw, 2.25rem); }
+  .container{
+    padding-inline: max(12px, env(safe-area-inset-left));
+    padding-right: max(12px, env(safe-area-inset-right));
+  }
+  .section{ padding-block: 54px; }
+  .section-title{ font-size: clamp(1.68rem, 8vw, 2.1rem); }
   body .about-copy,
   body .edu-card,
   body .lang-card,
   body .exp-card,
   body .contact-form,
   body .skill-card,
-  body .svc-card{ padding: 17px !important; }
+  body .svc-card{ padding: 16px 12px !important; }
   body .contact-item{ padding: 12px !important; }
+  body .proj-visual{ height: 145px !important; }
 }
 
-@media (max-height: 500px) and (orientation: landscape){
-  .section{ padding-block: 56px; }
-  .to-top{ width: 42px; height: 42px; }
+@media (max-height: 520px) and (orientation: landscape){
+  .section{ padding-block: 50px; }
+  .to-top{ width: 40px; height: 40px; }
 }
 
 @media (min-width: 1440px){

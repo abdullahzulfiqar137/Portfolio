@@ -487,6 +487,35 @@ interface TimezoneZone {
       @media (max-width: 860px) {
         .about-grid {
           grid-template-columns: 1fr;
+          gap: 20px;
+        }
+      }
+      @media (max-width: 480px) {
+        .about-copy {
+          padding: 22px 18px;
+        }
+        .edu-card,
+        .lang-card,
+        .remote-card {
+          padding: 18px 16px;
+        }
+        .tz-detail-box {
+          padding: 12px;
+        }
+        .tz-schedule {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 6px;
+        }
+        .tz-sched-arrow {
+          display: none;
+        }
+        .tz-tabs {
+          gap: 5px;
+        }
+        .tz-tab {
+          padding: 5px 9px;
+          font-size: 0.72rem;
         }
       }
     `,

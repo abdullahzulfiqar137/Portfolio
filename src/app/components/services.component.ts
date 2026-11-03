@@ -81,14 +81,19 @@ import { SERVICES } from '../data/portfolio.data';
         line-height: 1.65;
         font-size: 0.92rem;
       }
-      @media (max-width: 900px) {
+      @media (max-width: 960px) {
         .services-grid {
           grid-template-columns: 1fr 1fr;
+          gap: 16px;
         }
       }
-      @media (max-width: 620px) {
+      @media (max-width: 640px) {
         .services-grid {
           grid-template-columns: 1fr;
+          gap: 14px;
+        }
+        .svc-card {
+          padding: 22px 18px;
         }
       }
     `,

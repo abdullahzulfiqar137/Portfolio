@@ -673,17 +673,54 @@ import { PROJECTS } from '../data/portfolio.data';
       @media (max-width: 1024px) {
         .projects-grid {
           grid-template-columns: repeat(2, 1fr);
+          gap: 18px;
         }
       }
       @media (max-width: 768px) {
         .projects-grid {
           grid-template-columns: 1fr;
+          gap: 16px;
         }
         .arch-grid-2 {
           grid-template-columns: 1fr;
         }
         .arch-showcase {
-          padding: 20px;
+          padding: 20px 16px;
+          border-radius: 16px;
+        }
+        .arch-content {
+          padding: 16px 14px;
+        }
+        .video-modal {
+          padding: 12px;
+        }
+      }
+      @media (max-width: 480px) {
+        .proj-body {
+          padding: 18px 16px;
+        }
+        .proj-title-big {
+          font-size: 1.6rem;
+        }
+        .arch-title {
+          font-size: 1.25rem;
+        }
+        .arch-tabs {
+          gap: 6px;
+          margin-bottom: 18px;
+        }
+        .arch-tab {
+          padding: 6px 10px;
+          font-size: 0.74rem;
+        }
+        .arch-layer-item {
+          padding: 10px 12px;
+        }
+        .arch-layer-item strong {
+          font-size: 0.88rem;
+        }
+        .arch-layer-item small {
+          font-size: 0.74rem;
         }
       }
     `,
